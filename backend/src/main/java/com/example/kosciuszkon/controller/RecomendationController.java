@@ -1,22 +1,23 @@
 package com.example.kosciuszkon.controller;
 
-import com.example.kosciuszkon.entity.User;
-import com.example.kosciuszkon.service.UsersService;
+import com.example.kosciuszkon.service.RecomenadationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/recommendation")
 @RequiredArgsConstructor
-@RequestMapping("/users")
-public class UsersController {
+public class RecomendationController {
 
-    private final UsersService service;
+    private final RecomenadationService service;
 
-    @GetMapping("/add")
-    public User addUser(@RequestBody User user){
-        return service.save(user);
+    @GetMapping("/get")
+    public List<String> getRecommendations(@RequestBody List<String> features){
+        return service.send(features);
     }
 }

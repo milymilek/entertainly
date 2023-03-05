@@ -31,6 +31,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.14'
+    implementation group: 'com.theokanning.openai-gpt3-java', name: 'client', version: '0.11.0'
 
 
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'

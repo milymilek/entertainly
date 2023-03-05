@@ -6,20 +6,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
+@Entity(name = "users")
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class Users {
+public class User {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private long id;
+    private String username;
 
+    private String password;
 
-    @Column(name = "name")
-    private String name;
+    private int enabled;
 
 }
