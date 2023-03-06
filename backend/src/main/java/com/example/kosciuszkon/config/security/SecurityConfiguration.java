@@ -1,4 +1,4 @@
-package com.example.kosciuszkon.config;
+package com.example.kosciuszkon.config.security;
 
 import com.example.kosciuszkon.config.authentication.AuthFailureHandler;
 import com.example.kosciuszkon.config.authentication.AuthSuccessHandler;

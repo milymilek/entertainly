@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -31,5 +32,9 @@ public class CategoryService {
 
     public List<Categories> getForLoggedUser(User user) {
         return user.getCategories();
+    }
+
+    public Optional<Categories> getByName(String name){
+        return repository.findByName(name);
     }
 }
