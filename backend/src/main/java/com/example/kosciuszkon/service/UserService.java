@@ -4,6 +4,7 @@ import com.example.kosciuszkon.dto.CredentialsDTO;
 import com.example.kosciuszkon.entity.Authority;
 import com.example.kosciuszkon.entity.Token;
 import com.example.kosciuszkon.entity.User;
+import com.example.kosciuszkon.exceptions.UserNotFoundException;
 import com.example.kosciuszkon.repository.AuthorityRepository;
 import com.example.kosciuszkon.repository.TokenRepository;
 import com.example.kosciuszkon.repository.UserRepository;
@@ -38,5 +39,10 @@ public class UserService {
         token.setToken(rawToken);
         token.setCreated(LocalDateTime.now());
         tokenRepository.save(token);
+    }
+
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username)
+                .orElseThrow(UserNotFoundException::new);
     }
 }

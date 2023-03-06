@@ -29,6 +29,7 @@ public class RecomenadationService {
                 .map(it -> it.replaceAll("\n", "").replace(".", "").split("[0-9]"))
                 .map(Arrays::asList)
                 .orElse(Collections.emptyList());
+        System.out.println(rs.getChoices().get(0).getMessage().getContent());
         return parseResult(recommendations);
     }
 
@@ -37,7 +38,7 @@ public class RecomenadationService {
         cm.setContent(message);
         cm.setRole(ChatMessageRole.USER.value());
         return ChatCompletionRequest.builder()
-                .model("gpt-3.5-turbo")
+                .model("gpt-3.5-turbo-0301")
                 .messages(List.of(cm))
                 .build();
     }
@@ -46,6 +47,7 @@ public class RecomenadationService {
         var sb = new StringBuilder();
         sb.append("list hobbies for someone who is into ");
         features.forEach(it -> sb.append(it).append(","));
+        System.out.println(sb.toString());
         return sb.toString();
     }
 
