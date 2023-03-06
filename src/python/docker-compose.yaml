@@ -1,0 +1,21 @@
+version: "3"
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: my_neo4j_container
+    environment:
+      - NEO4J_AUTH=neo4j/password123
+    volumes:
+      - /data:/data
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn app.run:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+
