@@ -1,6 +1,8 @@
 package com.example.kosciuszkon.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.util.List;
@@ -20,6 +22,7 @@ public class User {
     private String password;
 
     @ManyToMany
+    @JsonIgnore
     private List<Categories> categories;
 
     public void setCategories(List<Categories> categories) {
