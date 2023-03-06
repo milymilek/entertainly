@@ -1,13 +1,8 @@
 package com.example.kosciuszkon.entity;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import javax.persistence.*;
 
 @Entity(name = "Authorities")
-@Setter
-@Getter
 public class Authority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,4 +14,27 @@ public class Authority {
     @JoinColumn(name = "username")
     private User username;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
+    public User getUsername() {
+        return username;
+    }
+
+    public void setUsername(User username) {
+        this.username = username;
+    }
 }

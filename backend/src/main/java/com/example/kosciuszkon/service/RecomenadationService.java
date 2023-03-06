@@ -13,8 +13,11 @@ import java.util.*;
 @Component
 public class RecomenadationService {
 
-    @Value("${api.token}")
-    private static final String authToken = "";
+    private final String authToken;
+
+    public RecomenadationService(@Value("${api.token}") String authToken) {
+        this.authToken = authToken;
+    }
 
     public List<String> send(List<String> feautes){
         var connectionService = RecomendationConnector.connect(authToken);

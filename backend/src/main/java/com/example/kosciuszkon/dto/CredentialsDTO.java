@@ -1,19 +1,11 @@
-package com.example.kosciuszkon.entity;
+package com.example.kosciuszkon.dto;
 
-import javax.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Entity(name = "users")
-@ToString
-@RequiredArgsConstructor
-@NoArgsConstructor
-public class User {
-
-    @Id
-    @NonNull
+@AllArgsConstructor
+public class CredentialsDTO {
     private String username;
-
-    @NonNull
     private String password;
 
     public String getUsername() {
