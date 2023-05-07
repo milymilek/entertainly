@@ -23,10 +23,10 @@
             id: 3,
             name: "",
             items: [
-                {id: 31, name: "Outdoorsy", visible: true},
-                {id: 32, name: "Spiritual"},
-                {id: 33, name: "Extrovert"},
-                {id: 34, name: "Animal Freak"},
+                {id: 31, name: "Outdoorsy", visible: true, desc: "Are you more of a go around type of person or do you prefer staying at home?"},
+                {id: 32, name: "Spiritual", desc: ""},
+                {id: 33, name: "Extrovert" , desc: "Are you into social gatherings or do you prefer staying at home?"},
+                {id: 34, name: "Animal Freak", desc: "What is your stance on animals?"},
             ]
         }
     ]
@@ -80,7 +80,7 @@
     }
     body {
         width: 100%;
-        background-color: #1a1a1a;
+        background-color: rgb(255,253,208);
     }
 </style>
 {#if stage == 0}

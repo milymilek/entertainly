@@ -24,7 +24,7 @@
 
     let dispatcher = createEventDispatcher();
 
-    export let show_modal = false ;
+    export let show_modal = false;
     let modal;
     onMount(() => {
         modal = new Modal("#exampleModal");

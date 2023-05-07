@@ -48,6 +48,7 @@
                     <button class="btn my-2 my-md-0 btn-primary align-self-end" on:click={() => {++stage}}>{login ? "Login" : "Register" }</button>
                     <div>or</div>
                     <button class="btn my-2 my-md-0 bg-body" on:click={() => login = !login}>{login ? "Register" : "Login" }</button>
+                    <button class="btn my-2 my-md-0 btn-primary align-self-end" on:click={() => {++stage}}>Browse anonymously</button>
                 </div>
             </div>
         </div>

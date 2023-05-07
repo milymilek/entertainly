@@ -3,14 +3,16 @@
     console.log(columnItems[0].items)
     console.log()
 </script>
+<style>
+</style>
 <section class="container-fluid">
     <div class="row w-100 h-25">
         {#each columnItems as column (column.id)}
-            <div class="col-12 m-auto board_column" overflow="scroll">
+            <div class="col-12 m-auto board_column myshadow" overflow="scroll">
                 <div class="column-title">{column.name}</div>
                 <div class="d-flex flex-column">
                     {#each column.items as item}
-                        <div class="card mb-3">
+                        <div class="card mb-3 shadow">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="{`public/${item.name}.jpg`}" class="img-thumbnail rounded-start w-100" alt="{item.name}">
