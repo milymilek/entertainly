@@ -7,7 +7,8 @@
     import Board from './lib/Board.svelte';
     import Dashboard from "./lib/Dashboard.svelte";
     import Navigation from "./lib/Navigation.svelte";
-    export let stage = 0, max_questions = 2;
+    import Chat from "./lib/Chat.svelte";
+    export let stage = 0, max_questions = 2, group;
     let board = [
         {
             id: 1,
@@ -91,7 +92,9 @@
         <Board bind:stage bind:max_questions columnItems={stage < 2  ? board : dashboard}></Board>
     {:else if stage == max_questions + 1}
         <Dashboard bind:stage bind:max_questions columnItems={dashboard}/>
+    {:else if stage == 10}
+        <Chat bind:group></Chat>
     {:else}
-        <MyHobbies bind:stage columnItems={dashboard_card}/>
+        <MyHobbies bind:group bind:stage columnItems={dashboard_card}/>
     {/if}
 {/if}

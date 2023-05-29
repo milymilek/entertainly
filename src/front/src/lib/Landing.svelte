@@ -32,6 +32,7 @@
                 <h5 class="card-title mb-4">
                     {login ? "Login" : "Register"}
                 </h5>
+                <button class="btn my-2 my-md-0 btn-primary" on:click={() => {++stage}}>Browse anonymously</button>
                 <div class="input-group mb-2">
                     <span class="input-group-text" id="login-login">@</span>
                     <input type="text" name="password" class="form-control" placeholder="Username" id="username" aria-label="Username" aria-describedby="User Login Input">
@@ -42,13 +43,12 @@
                 </div>
                 <div class="input-group mb-2" class:invisible={login}>
                     <span class="input-group-text" id="login-passwd2">#2</span>
-                    <input disabled={login} type="password" name="password" class="form-control" placeholder="" aria-label="Password" aria-describedby="Repeat Password Login Input">
+                    <input bind:disabled={login} type="password" name="password" class="form-control" placeholder="" aria-label="Password" aria-describedby="Repeat Password Login Input">
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between col-4 col-md-6 mx-2 align-items-end align-self-end">
                     <button class="btn my-2 my-md-0 btn-primary align-self-end" on:click={() => {++stage}}>{login ? "Login" : "Register" }</button>
                     <div>or</div>
                     <button class="btn my-2 my-md-0 bg-body" on:click={() => login = !login}>{login ? "Register" : "Login" }</button>
-                    <button class="btn my-2 my-md-0 btn-primary align-self-end" on:click={() => {++stage}}>Browse anonymously</button>
                 </div>
             </div>
         </div>
