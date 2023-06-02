@@ -1,3 +1,6 @@
+import random
+
+import pandas as pd
 import numpy as np
 
 nodes = {
@@ -15,9 +18,8 @@ nodes = {
     47: "outside", 48: "inside", 49: "solo", 50: "group", 51: "quiet_env",
     52: "brain", 53: "patience", 54: "eternalization", 55: "digital_arts"
 }
-
-paths = [[0, 1], [0, 2], [0, 3], [0, 4], [0,5], [0,6],
-         [4,5], [7, 8], [0, 14], [14, 15], [14, 19], [12, 18],
+paths = [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
+         [4, 5], [7, 8], [0, 14], [14, 15], [14, 19], [12, 18],
          [13, 18], [20, 21], [21, 22], [17, 34], [33, 31], [33, 12],
          [33, 13], [33, 23], [33, 36], [36, 42], [32, 35], [42, 46],
          [47, 12], [47, 13], [47, 23], [47, 2], [48, 0], [48, 7],
@@ -29,16 +31,41 @@ paths = [[0, 1], [0, 2], [0, 3], [0, 4], [0,5], [0,6],
          [51, 41], [51, 31], [51, 12], [27, 52], [27, 8], [24, 54], [24, 55],
          [30, 33], [30, 9], [30, 11], [39, 54], [39, 27], [38, 10], [38, 49],
          [38, 52], [28, 21], [28, 14], [28, 26]
-        ]
+         ]
 
+class InterestTraversal:
+    def __init__(self, path):
+        self.graph = InterestTraversal.init_graph(path)
+        self.cache = {}
 
-def create_adj_matrix():
-    n_nodes = max(nodes.keys()) + 1
-    adj_matr = np.zeros((n_nodes, n_nodes))
-    for x, y in paths:
-        adj_matr[y, x] = 1
-        adj_matr[x, y] = 1
-    return adj_matr
+    @staticmethod
+    def init_graph(df_path):
+        #G = pd.read_csv(df_path)
+        global paths
+        paths = np.array(paths)
 
-if __name__ == "__main__":
-    pass
+        n_nodes = max(nodes.keys()) + 1
+        adj_matr = np.zeros((n_nodes, n_nodes))
+
+        for x, y in paths:
+            adj_matr[y, x] = 1
+            adj_matr[x, y] = 1
+
+        G = adj_matr
+        return G
+
+    def add_user_to_cache(self, user):
+        self.cache.setdefault(user, {})
+
+    def __call__(self, user: int, prev_response: bool):
+        self.add_user_to_cache(user)
+        print("BEFORE IF:", self.cache)
+
+        if self.cache[user]:
+            last_pref = list(self.cache[user].items())[-1][0]
+            self.cache[user][last_pref] = prev_response
+
+        pref = random.randint(0, 56)
+        self.cache[user][pref] = None
+        print(self.cache)
+        return nodes[pref]
