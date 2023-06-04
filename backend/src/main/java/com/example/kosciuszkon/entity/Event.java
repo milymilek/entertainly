@@ -19,7 +19,16 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime eventTime;
+    private Long eventCreatorId;
+
+    //TODO add event creator, and allow him to delete event
+    //TODO leave event
+    //TODO edit event time
+    //TODO all event for given user
+
+    private LocalDateTime startTime;
+
+    private LocalDateTime endTime;
 
     private String address;
 

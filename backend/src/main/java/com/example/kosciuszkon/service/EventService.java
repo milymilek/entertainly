@@ -25,7 +25,8 @@ public class EventService {
         Categories category = categoryRepository.findByName(eventDetails.getCategoryName())
                 .orElseThrow(WrongEventDetailsException::new);
         Event event = Event.builder()
-                .eventTime(eventDetails.getEventTime())
+                .startTime(eventDetails.getStartTime())
+                .endTime(eventDetails.getEndTime())
                 .address(eventDetails.getAddress())
                 .description(eventDetails.getDescription())
                 .category(category)
@@ -48,7 +49,11 @@ public class EventService {
         Categories category = categoryRepository.findByName(categoryName)
                 .orElseThrow(WrongEventDetailsException::new);
         return eventRepository.findAll().stream()
-                .filter(e -> e.getCategory().equals(category) && e.getEventTime().isAfter(LocalDateTime.now()))
+                .filter(e -> e.getCategory().equals(category) && e.getStartTime().isAfter(LocalDateTime.now()))
                 .collect(Collectors.toList());
+    }
+
+    public void deleteEvent(Long eventId, Long creatorId) {
+
     }
 }
