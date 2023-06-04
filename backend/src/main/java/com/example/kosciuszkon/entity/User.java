@@ -1,25 +1,29 @@
 package com.example.kosciuszkon.entity;
 
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.List;
-import java.util.Set;
 
-@Entity(name = "users")
-@ToString
-@RequiredArgsConstructor
-@NoArgsConstructor
+@Entity
+@Getter
+@Setter
+@Table(name = "Users")
 public class User {
-
     @Id
-    @NonNull
     private String username;
 
-    @NonNull
+    private String email;
+
     private String password;
+
+    @JsonIgnore
+    private int enabled = 1;
 
     @ManyToMany
     @JsonIgnore
@@ -36,19 +40,4 @@ public class User {
         return categories;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

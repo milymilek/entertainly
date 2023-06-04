@@ -2,6 +2,7 @@ package com.example.kosciuszkon.controller;
 
 
 import com.example.kosciuszkon.dto.CredentialsDTO;
+import com.example.kosciuszkon.dto.UserDTO;
 import com.example.kosciuszkon.entity.User;
 import com.example.kosciuszkon.exceptions.UserNotFoundException;
 import com.example.kosciuszkon.service.UserService;
@@ -23,16 +24,21 @@ public class UserController {
     public void login(@RequestBody CredentialsDTO credentials) {
     }
 
-    @PostMapping("/signout")
+    @GetMapping("/signout")
     public void logout(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         service.logout(token);
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<CredentialsDTO> signup(@RequestBody User user) {
+    public ResponseEntity<UserDTO> signup(@RequestBody User user) {
         return Optional.ofNullable(service.createUser(user))
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "ok";
     }
 
     @ExceptionHandler(UserNotFoundException.class)
