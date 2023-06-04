@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class EventDTO {
-    private LocalDateTime eventTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private String address;
     private String description;
     private String categoryName;
