@@ -2,15 +2,17 @@ package com.example.kosciuszkon.controller;
 
 import com.example.kosciuszkon.dto.ChatMessage;
 import com.example.kosciuszkon.service.ChatService;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.messaging.MessageHeaders;
-import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,10 +22,8 @@ public class ChatController {
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")
-    public ChatMessage sendMessage(@Payload ChatMessage chatMessage, @Headers MessageHeaders headers,
-                                   SimpMessageHeaderAccessor headerAccessor) {
-        var categoryName = headerAccessor.getHeader("category");
-//        chatService.saveMessage(chatMessage, categoryName.toString());
+    public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+        chatService.saveMessage(chatMessage, chatMessage.getCategoryName());
         return chatMessage;
     }
 
@@ -31,10 +31,12 @@ public class ChatController {
     @SendTo("/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
-        var categoryName = headerAccessor.getHeader("category");
-//        var username = headerAccessor.getUser().getName();
-//        chatService.getChatHistory(categoryName.toString(), username);
         return chatMessage;
+    }
+
+    @GetMapping("/chat/history/{categoryName}")
+    public List<ChatMessage> getChatHistory(@PathVariable @NonNull String categoryName) {
+        return chatService.getChatHistory(categoryName);
     }
 
 }
