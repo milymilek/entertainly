@@ -33,6 +33,14 @@ paths = [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
          [38, 52], [28, 21], [28, 14], [28, 26]
          ]
 
+# nodes = {
+#     0: "music", 1: "club_music", 2: "concert", 3: "jazz", 4: "classical_music",
+#     5: "opera", 6: "recital", 7: "board_games", 8: "card_games", 9: "spiritual",
+#     10: "handwork", 11: "politics"
+# }
+#
+# paths = [[1,2],[1,3],[3,5],[4,5],[1,4],[1,7],[7,8],[5,6],[6,10],[6,11],[6,9],[1,5]]
+
 class InterestTraversal:
     def __init__(self, path):
         self.graph = InterestTraversal.init_graph(path)
@@ -57,15 +65,64 @@ class InterestTraversal:
     def add_user_to_cache(self, user):
         self.cache.setdefault(user, {})
 
+    def state(self, user_history):
+        neg = np.array([key for key, value in user_history.items() if value is False], dtype=int)
+        visited = np.array([key for key, value in user_history.items() if value is True], dtype=int)
+
+        print("neg: ", neg)
+        print("visited: ", visited)
+
+        adj_matrix = np.copy(self.graph)
+
+        if neg.size:
+            adj_matrix[neg] = 0
+            adj_matrix[:, neg] = 0
+
+        return adj_matrix, visited
+
+    def get_next_nodes(self, adj_matrix, visited):
+        #print(visited)
+        adj_edges = adj_matrix[visited].sum(axis=0)
+
+        if visited.size:
+            adj_edges[visited] = 0
+
+        if not adj_edges.any():
+            next_nodes = np.ones_like(adj_edges)
+            next_nodes[visited] = 0
+            p = next_nodes / sum(next_nodes)
+            next_nodes = np.nonzero(next_nodes)[0]
+        else:
+            p = adj_edges / sum(adj_edges)
+            next_nodes = np.nonzero(adj_edges)[0]
+
+        #print("next_nodes: ", next_nodes)
+        #print("p: ", p)
+
+        return next_nodes, p[next_nodes]
+
+    def traversal(self, user):
+        user_history = self.cache[user]
+        #print("history: ", user_history)
+        state_matrix, visited = self.state(user_history)
+
+        #print("visited: ", visited)
+
+        next_nodes, p = self.get_next_nodes(state_matrix, visited)
+
+        choice = np.random.choice(next_nodes, p=p)
+
+        return choice
+
+
     def __call__(self, user: int, prev_response: bool):
         self.add_user_to_cache(user)
-        print("BEFORE IF:", self.cache)
 
         if self.cache[user]:
             last_pref = list(self.cache[user].items())[-1][0]
             self.cache[user][last_pref] = prev_response
 
-        pref = random.randint(0, 56)
+        pref = self.traversal(user)
         self.cache[user][pref] = None
         print(self.cache)
         return nodes[pref]
