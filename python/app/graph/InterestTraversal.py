@@ -60,6 +60,7 @@ class InterestTraversal:
             adj_matr[x, y] = 1
 
         G = adj_matr
+
         return G
 
     def add_user_to_cache(self, user):
