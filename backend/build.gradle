@@ -35,6 +35,9 @@ dependencies {
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 
+    implementation 'org.springframework.boot:spring-boot-starter-websocket:2.2.6.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-reactor-netty:2.2.6.RELEASE'
+
 }
 
 tasks.named('test') {
