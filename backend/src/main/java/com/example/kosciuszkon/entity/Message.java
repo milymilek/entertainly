@@ -19,7 +19,7 @@ public class Message {
     @NonNull
     String content;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "username")
     @NonNull
     User owner;
@@ -27,8 +27,8 @@ public class Message {
     @NonNull
     LocalDateTime createdAt = LocalDateTime.now();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     Categories category;
 
 }

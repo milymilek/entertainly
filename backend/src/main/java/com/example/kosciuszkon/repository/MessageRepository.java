@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-    List<Message> findAllByCategory_NameAndOwner_Username(String name, String username);
+    List<Message> findByCategory_Name(String categoryName);
 }
