@@ -43,7 +43,7 @@
                 </div>
                 <div class="input-group mb-2" class:invisible={login}>
                     <span class="input-group-text" id="login-passwd2">#2</span>
-                    <input bind:disabled={login} type="password" name="password" class="form-control" placeholder="" aria-label="Password" aria-describedby="Repeat Password Login Input">
+                    <input type="password" name="password" class="form-control" placeholder="" aria-label="Password" aria-describedby="Repeat Password Login Input">
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between col-4 col-md-6 mx-2 align-items-end align-self-end">
                     <button class="btn my-2 my-md-0 btn-primary align-self-end" on:click={() => {++stage}}>{login ? "Login" : "Register" }</button>

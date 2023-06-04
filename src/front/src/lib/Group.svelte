@@ -2,6 +2,7 @@
     import Eliza from 'elizabot';
     import { beforeUpdate, afterUpdate } from 'svelte';
     export let group;
+    let chat_selected = false;
 
     let div;
     let autoscroll;
@@ -11,7 +12,7 @@
     });
 
     afterUpdate(() => {
-        if (autoscroll) div.scrollTo(0, div.scrollHeight);
+        if (autoscroll && chat_selected) div.scrollTo(0, div.scrollHeight);
     });
 
     const eliza = new Eliza();
@@ -97,6 +98,13 @@
     }
 </style>
 
+<input type="radio" class="btn-check" name="chat_or_group_options" id="chat_option" autocomplete="off" value="{true}" bind:group={chat_selected}>
+<label class="btn btn-secondary" for="chat_option">Chat</label>
+
+<input type="radio" class="btn-check" name="chat_or_group_options" id="event_option" value="{false}" autocomplete="off" bind:group={chat_selected}>
+<label class="btn btn-secondary" for="event_option">Wydarzenia</label>
+
+{#if chat_selected === true}
 <div class="chat m-auto bg-opacity-50 bg-gradient">
     <h1>{group}</h1>
 
@@ -110,3 +118,6 @@
 
     <input class="w-50 m-auto" on:keydown={handleKeydown}>
 </div>
+{:else}
+    
+{/if}
