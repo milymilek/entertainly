@@ -1,0 +1,9 @@
+digraph AppFunctionality {
+  node [shape=rectangle, style=filled, fillcolor="#f7cac9"];
+  edge [color="#ca3e47"];
+
+  Użytkownik -> {Logowanie, Rejestracja}
+  Logowanie -> {"Określenie zainteresowań", "Przegląd hobby"}
+  "Przegląd hobby" -> {"Interakcja z innymi pasjonatami", "Stworzenie wydarzenia"}
+  "Określenie zainteresowań" -> "Dodanie nowych potencjalnych hobby"
+}
