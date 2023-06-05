@@ -1,8 +1,11 @@
 <script>
     import Eliza from 'elizabot';
     import { beforeUpdate, afterUpdate } from 'svelte';
+    import EventForm from './EventForm.svelte';
+    import EventOrganizer from './EventOrganizer.svelte';
     export let group;
     let chat_selected = false;
+    let selected_option = "chat"
 
     let div;
     let autoscroll;
@@ -20,6 +23,11 @@
     let comments = [
 
     ];
+
+    function handleButtonClick(value) {
+        selected_option = value;
+        // console.log(value)
+    }
 
     function handleKeydown(event) {
         if (event.key === 'Enter') {
@@ -98,15 +106,24 @@
     }
 </style>
 
-<input type="radio" class="btn-check" name="chat_or_group_options" id="chat_option" autocomplete="off" value="{true}" bind:group={chat_selected}>
+<!-- <input type="radio" class="btn-check" name="chat_or_group_options" id="chat_option" autocomplete="off" value="{true}" bind:group={chat_selected}>
 <label class="btn btn-secondary" for="chat_option">Chat</label>
 
 <input type="radio" class="btn-check" name="chat_or_group_options" id="event_option" value="{false}" autocomplete="off" bind:group={chat_selected}>
-<label class="btn btn-secondary" for="event_option">Wydarzenia</label>
+<label class="btn btn-secondary" for="event_option">Wydarzenia</label> -->
 
-{#if chat_selected === true}
+<input type="button" class="btn-check" name="chat_option" id="chat_option" on:click={() => handleButtonClick("chat")}>
+<label class="btn btn-secondary" for="chat_option">Chat</label>
+<input type="button" class="btn-check" name="events_option" id="events_option" on:click={() => handleButtonClick("events")}>
+<label class="btn btn-secondary" for="events_option">Wydarzenia</label>
+<input type="button" class="btn-check" name="options_button" id="add_event_option" on:click={() => handleButtonClick("add_event")}>
+<label class="btn btn-secondary" for="add_event_option">Dodaj wydarzenie</label>
+
+
+<h1>{group}</h1>
+<!-- {#if chat_selected === true} -->
+{#if selected_option === "chat"}
 <div class="chat m-auto bg-opacity-50 bg-gradient">
-    <h1>{group}</h1>
 
     <div class="scrollable" bind:this={div}>
         {#each comments as comment}
@@ -118,6 +135,10 @@
 
     <input class="w-50 m-auto" on:keydown={handleKeydown}>
 </div>
-{:else}
+{:else if selected_option === "events"}
+    <EventOrganizer {group}/>
+
+{:else if selected_option === "add_event"}
+    <EventForm {group}/>
     
 {/if}
