@@ -9,7 +9,7 @@
     onMount(async () => {
         console.log(group)
         try {
-            const response = await fetch(`/api/event/all/${group}`);
+            const response = await fetch(`http://localhost:8080/event/all/${group}`);
             if (response.ok) {
                 events = await response.json();
             } else {
@@ -24,9 +24,12 @@
     {#each events as event}
       <Event
         id={event.id}
-        title={event.title}
+        eventCreatorId={event.eventCreatorId}
+        startTime={event.startTime}
+        endTime={event.endTime}
+        address={event.address}
         description={event.description}
-        date={event.date}
+        category={event.categoryName}
       />
     {/each}
   {:else}

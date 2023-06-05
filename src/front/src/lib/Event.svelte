@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import {getAccessTokenFromCookie} from "./common.js";
     export let id;
     export let eventCreatorId;
     export let startTime
@@ -7,33 +8,41 @@
     export let address;
     export let description;
     export let category;
-    export let participants;
+    let participants;
     let isRegistered = false;
 
     const dispatch = createEventDispatcher();
-  
-    function saveEvent() {
-        if(!isRegistered) {
-            isRegistered = true;
-            const event = {
-                id: id,
-                description: description,
-                date: date
-            };
 
-            dispatch('saveEvent', event);
+    async function saveEvent() {
+        const token = getAccessTokenFromCookie();
+        if (!isRegistered) {
+            isRegistered = true;
+
+            const response = await fetch('http://localhost:8080/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `${token}`,
+                },
+                body: JSON.stringify(id),
+            });
+
+            if (response.ok) {
+                console.log("Saving ended succesfully")
+            } else {
+                // Dodatkowa logika w przypadku błędu
+            }
         }
     }
+
   </script>
 
 <div class="event">
-    <p class="event-description">{description}</p>
-    <p class="event-date">Date: {date}</p>
-    {#if !isRegistered}
-        <button class="save-button" on:click={() => saveEvent()}>Zapisz się</button>
-    {:else}
-        <p>Already saved</p>
-    {/if}
+    <p>{description}</p>
+    <p>Start: {startTime}</p>
+    <p>End: {endTime}</p>
+    <p>Address: {address}</p>
+    <button class="save-button" on:click={saveEvent}>Zapisz się</button>
 </div>
   
   <style>
@@ -43,19 +52,9 @@
       margin-bottom: 10px;
     }
   
-    .event-title {
-      font-size: 18px;
+    .p {
+      font-size: 10px;
       font-weight: bold;
-    }
-  
-    .event-description {
-      margin-top: 5px;
-      margin-bottom: 10px;
-    }
-  
-    .event-date {
-      color: #888;
-      font-size: 14px;
     }
   
     .save-button {

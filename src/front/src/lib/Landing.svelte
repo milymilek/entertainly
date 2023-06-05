@@ -80,6 +80,8 @@
             body: JSON.stringify(creds)
         }).then((response) => {
             if(response.ok) {
+                let token = response.headers.get('Authorization')
+                document.cookie = `access_token=${token}`;
                 console.log("Logged in succesfully");
                 stage++;
             } else {

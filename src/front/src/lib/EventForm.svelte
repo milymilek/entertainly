@@ -1,5 +1,7 @@
 <script>
     // export let user;
+    import {getAccessTokenFromCookie} from "./common.js";
+
     export let group;
     let eventDetails = {
       startTime: '',
@@ -8,13 +10,15 @@
       description: '1',
       categoryName: group
     };
-  
+
     async function createEvent() {
       console.log(group)
+      const token = getAccessTokenFromCookie();
       const response = await fetch('http://localhost:8080/event/new', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: `${token}`
         },
         body: JSON.stringify(eventDetails)
       });
