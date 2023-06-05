@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +34,7 @@ public class EventService {
                 .address(eventDetails.getAddress())
                 .description(eventDetails.getDescription())
                 .category(category)
-                .participants(new ArrayList<>())
+                .participants(new HashSet<>())
                 .eventCreatorId(creatorId)
                 .build();
         eventRepository.save(event);
