@@ -23,13 +23,13 @@ public class ChatService {
 
     private final UserRepository userRepository;
 
-    public List<ChatMessage> getChatHistory(String categoryName, String username){
-        var messages = messageRepository.findAllByCategory_NameAndOwner_Username(categoryName, username);
+    public List<ChatMessage> getChatHistory(String categoryName){
+        var messages = messageRepository.findByCategory_Name(categoryName);
         return messages.stream().map(it -> {
             var res = new ChatMessage();
             res.setType(ChatMessage.MessageType.JOIN);
-            res.setContent(res.getContent());
-            res.setContent(res.getSender());
+            res.setContent(it.getContent());
+            res.setSender(it.getOwner().getUsername());
             return res;
         }).collect(Collectors.toList());
     }
@@ -42,7 +42,7 @@ public class ChatService {
         var message = new Message();
         message.setCategory(category);
         message.setOwner(user);
-        message.setContent(message.getContent());
+        message.setContent(messageDTO.getContent());
         messageRepository.save(message);
     }
 }
