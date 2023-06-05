@@ -11,7 +11,7 @@ SET standard_conforming_strings = on;
 -- Roles
 --
 
-ALTER ROLE "user" WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:geWsiBMJbgkneBcbzsrYrw==$0t01b0ejCSYl60VKYBvk85gYdU/U9Q72aPyz9PQNbjQ=:Dbi1LZ26HFDDFU9T/rrk47NQpQhPRNfo9POKiYobCmE=';
+ALTER ROLE "user" WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:MbpYxVmlm/imjTJ8wH4TBg==$KWWsMQiONZLuUYr/0P1BzdvyUDtOQDiu3hO917Mg874=:MR6vmGX/ZTDIh+kYvFu+qQ1eZ3QSogmRXKMA3NO7NTU=';
 
 --
 -- User Configurations
@@ -467,6 +467,7 @@ COPY public.authorities (id, authority, username) FROM stdin;
 --
 
 COPY public.categories (id, name) FROM stdin;
+0	Acting
 1	Action Figures
 2	Adventure park
 3	Aerobics
@@ -483,10 +484,8 @@ COPY public.categories (id, name) FROM stdin;
 14	Amateur astronomy
 15	Amateur geology
 16	Amateur meteorology
-17	Amateur radio
 18	American football
 19	Amusement Park
-20	Amusement park
 21	Animal
 22	Animal care
 23	Antiques
@@ -528,7 +527,6 @@ COPY public.categories (id, name) FROM stdin;
 59	Ballooning
 60	Scuba
 61	Scuba Diving
-62	Scuba diving
 63	Sculling or Rowing
 64	Sculpting
 65	Sculpture
@@ -555,660 +553,569 @@ COPY public.categories (id, name) FROM stdin;
 86	Skateboarding
 87	Skateboarding/rollerblading
 88	Skating
-89	Skating
-90	Skiing
-91	Skill games
-92	playing soccer
-93	free diving
-94	diving
-95	Skincare Regime
-96	Sky diving
-97	Skydiving
-98	Skydiving
-99	Skype
-100	Sky running
-101	Sledding
-102	Slot car racing
-103	Snake
-104	Snooker
-105	Snorkeling
-106	Snow Biking
-107	Snow Skiing
-108	Snow skiing
-109	Snowboarding
-110	Snowmobile Riding
-111	Snowmobiles
-112	Snowmobiling
-113	Snowshoeing
-114	Soap making
-115	Soccer
-116	Social
-117	Social Networking
-118	Soft Rock
-119	Softball
-120	Space Exploration
-121	Speed Skating
-122	Spider
-123	Spinning
-124	Sport fishing
-125	Sporting dog field trials
-126	Sporting interests
-127	Sports
-128	Sports Cards
-129	Sports memorabilia
-130	Sports on TV
-131	Squash
-132	Stained Glass
-133	Stamp Collecting
-134	Stamps
-135	Stargazing
-136	Stereo
-137	Stocks
-138	Stone collecting
-139	Street Racing
-140	Street games
-141	Sudoku Puzzles
-142	Sunbathing
-143	Surfing
-144	Survey date
-145	Sweepstakes
-146	Sweepstake
-147	Swimming
-148	Swimming pool
-149	Table Tennis
-150	Table football
-151	Table tennis
-152	Tabletop games
-153	Tai Chi
-154	Tango Dance
-155	Target shooting
-156	Target shooting
-157	Tarot
-158	Tarot card reading
-159	Taxidermy
-160	Team Games
-161	Telescopes
-162	Ten Pin Bowling
-163	Tennis
-164	Texting
-165	Theater Sports
-166	Theater/Performing Arts
-167	Theatre
-168	Third person shooter games
-169	Thriller
-170	Tie dying
-171	Tile-based games
-172	Timeshare
-173	Touch football
-174	Tour skating
-175	Toys
-176	Track &amp
-177	 Field
-178	Train Spotting
-179	Trainspotting
-180	Trap
-181	Travel
-182	Travel games
-183	Traveling
-184	Traveling and exploration
-185	Treasure Hunting
-186	Treasure hunting
-187	Tree climbing
-188	Trekkie
-189	Trekking
-190	Turtle
-191	Tutoring
-192	Types of Recreation
-193	US Travel
-194	Urban exploration
-195	Vacation cruises
-196	Traveling
-197	Vacations
-198	Vehicle restoration
-199	Veterans
-200	Video Games
-201	Video games
-202	Video gaming
-203	DVD
-204	Video
-205	Videophilia
-206	Vintage Books
-207	Vintage car
-208	Vintage clothing
-209	Vitamin supplements
-210	Volleyball
-211	Volunteering
-212	Walking
-213	Walking and Hiking
-214	Walking/health
-215	Wall Art
-216	Want further mailings
-217	Wargames
-218	Warships
-219	Watching Movies
-220	Watching Sports
-221	Watching TV
-222	Watching movies
-223	Water Polo
-224	Water Skiing
-225	Water sports
-226	Watercolor Paintings
-227	Weather Forecasting
-228	Weaving
-229	Websites
-230	Weight training
-231	Weightlifting
-232	White Water Rafting
-233	Whitewater rafting
-234	Wildlife safari   Snorkeling A
-235	Wildlife
-236	Wind Surfing
-237	Windsurfing
-238	Windsurfing Kayaking
-239	Wine Appreciation
-240	Wine Making
-241	Wine tasting
-242	Wines
-243	Wingsuit flying
-244	Wood Carving
-245	Wood Working
-246	Woodworking
-247	Word games
-248	World news or politics
-249	Worldbuilding
-250	Worship Team
-251	Wrestling
-252	Writing
-253	Yachting
-254	Yo-yoing
-255	YoYo
-256	Yoga
-257	Youth Band
-258	Youth Group
-259	Yoyo
-260	Zumba
-261	cooperative games
-262	courses
-263	deck building games
-264	insects
-265	knotting
-266	leaves
-267	magician
-268	angling/Fly fishing
-269	real time games
-270	rocks
-271	strategy games
-272	thematic games
-273	Acting
-274	Aeromodeling
-275	Air sports
-276	Airbrushing
-277	Aircraft Spotting
-278	Airsoft
-279	Airsofting
-280	Amateur astronomy
-281	Amateur geology
-282	Amateur Radio
-283	American football
-284	Animal fancy
-285	dogs
-286	pets
-287	Animals
-288	Antiquing
-289	Antiquities
-290	Aqua-lung
-291	Aquarium
-292	Archery
-293	Art collecting
-294	Arts
-295	Association football
-296	Astrology
-297	Astronomy
-298	Audiophilia
-299	Auto audiophilia
-300	Auto racing
-301	Backgammon
-302	Backpacking
-303	Badminton
-304	Base Jumping
-305	Baseball
-306	Basketball
-307	Baton Twirling
-308	Beach Volleyball
-309	Sun tanning
-310	Beach
-311	Beachcombing
-312	Beadwork
-313	Beatboxing
-314	Beekeeping
-315	Bell Ringing
-316	Belly Dancing
-317	Bicycle Polo
-318	Bicycling
-319	Billiards
-320	Bird watching
-321	Birding
-322	Birdwatching
-323	Blacksmithing
-324	Blogging
-325	BMX
-326	Board games
-327	Board sports
-328	BoardGames
-329	Boating
-330	Body Building
-331	Bodybuilding
-332	Bonsai Tree
-333	Book collecting
-334	Bookbinding
-335	Boomerangs
-336	Bowling
-337	Boxing
-338	Brazilian jiu-jitsu
-339	Breakdancing
-340	Brewing Beer
-341	Bridge
-342	Bridge Building
-343	Bringing Food To The Disabled
-344	Building Dollhouses
-345	Bus spotting
-346	Butterfly Watching
-347	Button Collecting
-348	Cake Decorating
-349	Calligraphy
-350	Camping
-351	Candle making
-352	Canoeing
-353	Car Racing
-354	Card collecting
-355	Cartooning
-356	Casino Gambling
-357	Cave Diving
-358	Ceramics
-359	Cheerleading
-360	Chess
-361	Church/church activities
-362	Cigar Smoking
-363	Climbing
-364	Cloud Watching
-365	Coin Collecting
-366	Collecting
-367	Collecting Antiques
-368	Collecting Artwork
-369	Collecting Hats
-370	Collecting Music Albums
-371	Collecting RPM Records
-372	Collecting Sports Cards
-373	Collecting Swords
-374	Color guard
-375	Coloring
-376	Comic book collecting
-377	Compose Music
-378	Computer activities
-379	Computer programming
-380	Conworlding
-381	Cooking
-382	Cosplay
-383	Cosplaying
-384	Couponing
-385	Crafts
-386	Creative writing
-387	Cricket
-388	Crochet
-389	Crocheting
-390	Cross-Stitch
-391	Crossword Puzzles
-392	Cryptography
-393	Curling
-394	Cycling
-395	Dance
-396	Dancing
-397	Darts
-398	Debate
-399	Deltiology
-400	Diecast Collectibles
-401	Digital arts
-402	Digital Photography
-403	Disc golf
-404	Do it yourself
-405	Dodgeball
-406	Dog sport
-407	Dolls
-408	Dominoes
-409	Dowsing
-410	Drama
-411	Drawing
-412	Driving
-413	Dumpster Diving
-414	Eating out
-415	Educational Courses
-416	Electronics
-417	Element collecting
-418	Embroidery
-419	Entertaining
-420	Equestrianism
-421	aerobics
-422	Exercise
-423	Exhibition drill
-424	Falconry
-425	Fast cars
-426	Felting
-427	Fencing
-428	Field hockey
-429	Figure skating
-430	Fire Poi
-431	Fishing
-432	Fishkeeping
-433	Flag Football
-434	Floorball
-435	Floral Arrangements
-436	Flower arranging
-437	Flower collecting and pressing
-438	Fly Tying
-439	Flying
-440	Footbag
-441	Football
-442	Foraging
-443	Foreign language learning
-444	Fossil hunting
-445	Four Wheeling
-446	Freshwater Aquariums
-447	Frisbee Golf
-448	Gambling
-449	Games
-450	Gaming
-451	Garage Saleing
-452	Gardening
-453	Genealogy
-454	Geocaching
-455	Ghost hunting
-456	Glassblowing
-457	Glowsticking
-458	Gnoming
-459	Going to movies
-460	Golf
-461	Golfing
-462	Gongoozling
-463	Graffiti
-464	Grip Strength
-465	Guitar
-466	Gun Collecting
-467	Gunsmithing
-468	Gymnastics
-469	Gyotaku
-470	Handball
-471	Handwriting Analysis
-472	Hang gliding
-473	Herping
-474	Hiking
-475	Home Brewing
-476	Home Repair
-477	Home Theater
-478	Homebrewing
-479	Hooping
-480	Horse riding
-481	Hot air ballooning
-482	Hula Hooping
-483	Hunting
-484	Ice hockey
-485	Ice skating
-486	Iceskating
-487	Illusion
-488	Impersonations
-489	Inline skating
-490	Insect collecting
-491	Internet
-492	Inventing
-493	Jet Engines
-494	Jewelry Making
-495	Jigsaw Puzzles
-496	Jogging
-497	Judo
-498	Juggling
-499	Jukskei
-500	Jump Roping
-501	Kabaddi
-502	Kart racing
-503	Kayaking
-504	Keep A Journal
-505	Kitchen Chemistry
-506	Kite Boarding
-507	Kite flying
-508	Kites
-509	Kitesurfing
-510	Knapping
-511	Knife making
-512	Knife throwing
-513	Knitting
-514	Knotting
-515	Lacemaking
-516	Lacrosse
-517	Lapidary
-518	LARPing
-519	Laser tag
-520	Lasers
-521	Lawn Darts
-522	Learn to Play Poker
-523	Learning A Foreign Language
-524	Learning An Instrument
-525	Learning To Pilot A Plane
-526	Leather crafting
-527	Leathercrafting
-528	Lego building
-529	Legos
-530	Letterboxing
-531	Listening to music
-532	Locksport
-533	Machining
-534	Macramé
-535	Macrame
-536	Magic
-537	Mahjong
-538	Making Model Cars
-539	Marbles
-540	Marksmanship
-541	Martial arts
-542	Matchstick Modeling
-543	Meditation
-544	Metal detecting
-545	Meteorology
-546	Microscopy
-547	Mineral collecting
-548	Model aircraft
-549	Model building
-550	Model Railroading
-551	Model Rockets
-552	Modeling Ships
-553	Models
-554	Motor sports
-555	Motorcycles
-556	Mountain Biking
-557	Mountain Climbing
-558	Mountaineering
-559	Movie and movie memorabilia collecting
-560	Mushroom hunting/Mycology
-561	Musical Instruments
-562	Nail Art
-563	Needlepoint
-564	Netball
-565	Nordic skating
-566	Orienteering
-567	Origami
-568	Owning An Antique Car
-569	Paintball
-570	Painting
-571	Papermache
-572	Papermaking
-573	Parachuting
-574	Paragliding or Power Paragliding
-575	Parkour
-576	People Watching
-577	Photography
-578	Piano
-579	Pigeon racing
-580	Pinochle
-581	Pipe Smoking
-582	Planking
-583	Playing music
-584	Playing musical instruments
-585	Playing team sports
-586	Poker
-587	Pole Dancing
-588	Polo
-589	Pottery
-590	Powerboking
-591	Protesting
-592	Puppetry
-593	Puzzles
-594	Pyrotechnics
-595	Quilting
-596	R/C Boats
-597	R/C Cars
-598	R/C Helicopters
-599	R/C Planes
-600	Racing Pigeons
-601	Racquetball
-602	Radio-controlled car racing
-603	Rafting
-604	Railfans
-605	Rappelling
-606	Rapping
-607	Reading
-608	Reading To The Elderly
-609	Record collecting
-610	Relaxing
-611	Renaissance Faire
-612	Renting movies
-613	Rescuing Abused
-614	 Abandoned Animals
-615	Robotics
-616	Rock balancing
-617	Rock climbing
-618	Rock Collecting
-619	Rockets
-620	Rocking AIDS Babies
-621	Roleplaying
-622	Roller derby
-623	Roller skating
-624	Rugby
-625	Rugby league football
-626	Running
-627	Sailing
-628	Saltwater Aquariums
-629	Sand art
-630	Sand Castles
-631	Scrapbooking
-632	Scuba diving
-633	Sculling or Rowing
-634	Sculpting
-635	Sea glass collecting
-636	Seashell collecting
-637	Self Defense
-638	Sewing
-639	Shark Fishing
-640	Shooting
-641	Shooting sport
-642	Shopping
-643	Shortwave listening
-644	Singing
-645	Singing In Choir
-646	Skateboarding
-647	Skeet Shooting
-648	Sketching
-649	Skiing
-650	Skimboarding
-651	Sky Diving
-652	Skydiving
-653	Slack Lining
-654	Slacklining
-655	Sleeping
-656	Slingshots
-657	Slot car racing
-658	Snorkeling
-659	Snowboarding
-660	Soap Making
-661	Soapmaking
-662	Socializing with friends/neighbors
-663	Speed Cubing
-664	Speed skating
-665	Spelunkering
-666	Spending time with family/kids
-667	Sports
-668	Squash
-669	Stamp Collecting
-670	Stand-up comedy
-671	Stone collecting
-672	Stone skipping
-673	Storm Chasing
-674	Storytelling
-675	String Figures
-676	Sudoku
-677	Surf Fishing
-678	Surfing
-679	Survival
-680	Swimming
-681	Table football
-682	Table tennis
-683	Taekwondo
-684	Tai chi
-685	Tatting
-686	Taxidermy
-687	Tea Tasting
-688	Tennis
-689	Tesla Coils
-690	Tetris
-691	Textiles
-692	Texting
-693	Tombstone Rubbing
-694	Tool Collecting
-695	Tour skating
-696	Toy Collecting
-697	Train Collecting
-698	Train Spotting
-699	Trainspotting
-700	Traveling
-701	Treasure Hunting
-702	Trekkie
-703	Triathlon
-704	Tutoring Children
-705	TV watching
-706	Ultimate Frisbee
-707	Urban exploration
-708	Vehicle restoration
-709	Video game collecting
-710	Video Games
-711	Video gaming
-712	Videophilia
-713	Vintage cars
-714	Violin
-715	Volleyball
-716	Volunteer
-717	Walking
-718	Warhammer
-719	Watching movies
-720	Watching sporting events
-721	Water sports
-722	Weather Watcher
-723	Web surfing
-724	Weightlifting
-725	Windsurfing
-726	Wine Making
-727	Wood carving
-728	Woodworking
-729	Working In A Food Pantry
-730	Working on cars
-731	World Record Breaking
-732	Worldbuilding
-733	Wrestling
-734	Writing
-735	Writing Music
-736	Writing Songs
-737	Yo-yoing
-738	Yoga
-739	YoYo
-740	Ziplining
-741	Zumba
-742	Acting
+89	Skiing
+90	Skill games
+91	playing soccer
+92	free diving
+93	diving
+94	Skincare Regime
+95	Sky diving
+96	Skydiving
+97	Skype
+98	Sky running
+99	Sledding
+100	Slot car racing
+101	Snake
+102	Snooker
+103	Snorkeling
+104	Snow Biking
+105	Snow Skiing
+107	Snowboarding
+108	Snowmobile Riding
+109	Snowmobiles
+110	Snowmobiling
+111	Snowshoeing
+112	Soap making
+113	Soccer
+114	Social
+115	Social Networking
+116	Soft Rock
+117	Softball
+118	Space Exploration
+119	Speed Skating
+120	Spider
+121	Spinning
+122	Sport fishing
+123	Sporting dog field trials
+124	Sporting interests
+125	Sports
+126	Sports Cards
+127	Sports memorabilia
+128	Sports on TV
+129	Squash
+130	Stained Glass
+131	Stamp Collecting
+132	Stamps
+133	Stargazing
+134	Stereo
+135	Stocks
+136	Stone collecting
+137	Street Racing
+138	Street games
+139	Sudoku Puzzles
+140	Sunbathing
+141	Surfing
+142	Survey date
+143	Sweepstakes
+144	Sweepstake
+145	Swimming
+146	Swimming pool
+147	Table Tennis
+148	Table football
+150	Tabletop games
+151	Tai Chi
+152	Tango Dance
+153	Target shooting
+154	Tarot
+155	Tarot card reading
+156	Taxidermy
+157	Team Games
+158	Telescopes
+159	Ten Pin Bowling
+160	Tennis
+161	Texting
+162	Theater Sports
+163	Theater/Performing Arts
+164	Theatre
+165	Third person shooter games
+166	Thriller
+167	Tie dying
+168	Tile-based games
+169	Timeshare
+170	Touch football
+171	Tour skating
+172	Toys
+173	Track &amp
+174	 Field
+175	Train Spotting
+176	Trainspotting
+177	Trap
+178	Travel
+179	Travel games
+180	Traveling
+181	Traveling and exploration
+182	Treasure Hunting
+184	Tree climbing
+185	Trekkie
+186	Trekking
+187	Turtle
+188	Tutoring
+189	Types of Recreation
+190	US Travel
+191	Urban exploration
+192	Vacation cruises
+193	Vacations
+194	Vehicle restoration
+195	Veterans
+196	Video Games
+198	Video gaming
+199	DVD
+200	Video
+201	Videophilia
+202	Vintage Books
+203	Vintage car
+204	Vintage clothing
+205	Vitamin supplements
+206	Volleyball
+207	Volunteering
+208	Walking
+209	Walking and Hiking
+210	Walking/health
+211	Wall Art
+212	Want further mailings
+213	Wargames
+214	Warships
+215	Watching Movies
+216	Watching Sports
+217	Watching TV
+219	Water Polo
+220	Water Skiing
+221	Water sports
+222	Watercolor Paintings
+223	Weather Forecasting
+224	Weaving
+225	Websites
+226	Weight training
+227	Weightlifting
+228	White Water Rafting
+229	Whitewater rafting
+230	Wildlife safari   Snorkeling A
+231	Wildlife
+232	Wind Surfing
+233	Windsurfing
+234	Windsurfing Kayaking
+235	Wine Appreciation
+236	Wine Making
+237	Wine tasting
+238	Wines
+239	Wingsuit flying
+240	Wood Carving
+241	Wood Working
+242	Woodworking
+243	Word games
+244	World news or politics
+245	Worldbuilding
+246	Worship Team
+247	Wrestling
+248	Writing
+249	Yachting
+250	Yo-yoing
+251	YoYo
+252	Yoga
+253	Youth Band
+254	Youth Group
+256	Zumba
+257	cooperative games
+258	courses
+259	deck building games
+260	insects
+261	knotting
+262	leaves
+263	magician
+264	angling/Fly fishing
+265	real time games
+266	rocks
+267	strategy games
+268	thematic games
+269	Aeromodeling
+271	Airsofting
+272	Animal fancy
+273	dogs
+274	pets
+275	Animals
+276	Aqua-lung
+277	Aquarium
+278	Arts
+279	Backgammon
+280	Base Jumping
+281	Baseball
+282	Basketball
+283	Baton Twirling
+284	Beach Volleyball
+285	Sun tanning
+286	Beach
+287	Beachcombing
+288	Beadwork
+289	Beatboxing
+290	Beekeeping
+291	Bell Ringing
+292	Belly Dancing
+293	Bicycle Polo
+294	Bicycling
+295	Billiards
+296	Bird watching
+297	Birding
+298	Birdwatching
+299	Blacksmithing
+300	Blogging
+301	BMX
+302	Board games
+303	Board sports
+304	BoardGames
+305	Boating
+306	Body Building
+307	Bodybuilding
+308	Bonsai Tree
+309	Book collecting
+310	Bookbinding
+311	Boomerangs
+312	Bowling
+313	Boxing
+314	Brazilian jiu-jitsu
+315	Breakdancing
+316	Brewing Beer
+317	Bridge
+318	Bridge Building
+319	Bringing Food To The Disabled
+320	Building Dollhouses
+321	Bus spotting
+322	Butterfly Watching
+323	Button Collecting
+324	Cake Decorating
+325	Calligraphy
+326	Camping
+327	Candle making
+328	Canoeing
+329	Car Racing
+330	Card collecting
+331	Cartooning
+332	Casino Gambling
+333	Cave Diving
+334	Ceramics
+335	Cheerleading
+336	Chess
+337	Church/church activities
+338	Cigar Smoking
+339	Climbing
+340	Cloud Watching
+341	Coin Collecting
+342	Collecting
+343	Collecting Antiques
+344	Collecting Artwork
+345	Collecting Hats
+346	Collecting Music Albums
+347	Collecting RPM Records
+348	Collecting Sports Cards
+349	Collecting Swords
+350	Color guard
+351	Coloring
+352	Comic book collecting
+353	Compose Music
+354	Computer activities
+355	Computer programming
+356	Conworlding
+357	Cooking
+358	Cosplay
+359	Cosplaying
+360	Couponing
+361	Crafts
+362	Creative writing
+363	Cricket
+364	Crochet
+365	Crocheting
+366	Cross-Stitch
+367	Crossword Puzzles
+368	Cryptography
+369	Curling
+370	Cycling
+371	Dance
+372	Dancing
+373	Darts
+374	Debate
+375	Deltiology
+376	Diecast Collectibles
+377	Digital arts
+378	Digital Photography
+379	Disc golf
+380	Do it yourself
+381	Dodgeball
+382	Dog sport
+383	Dolls
+384	Dominoes
+385	Dowsing
+386	Drama
+387	Drawing
+388	Driving
+389	Dumpster Diving
+390	Eating out
+391	Educational Courses
+392	Electronics
+393	Element collecting
+394	Embroidery
+395	Entertaining
+396	Equestrianism
+398	Exercise
+399	Exhibition drill
+400	Falconry
+401	Fast cars
+402	Felting
+403	Fencing
+404	Field hockey
+405	Figure skating
+406	Fire Poi
+407	Fishing
+408	Fishkeeping
+409	Flag Football
+410	Floorball
+411	Floral Arrangements
+412	Flower arranging
+413	Flower collecting and pressing
+414	Fly Tying
+415	Flying
+416	Footbag
+417	Football
+418	Foraging
+419	Foreign language learning
+420	Fossil hunting
+421	Four Wheeling
+422	Freshwater Aquariums
+423	Frisbee Golf
+424	Gambling
+425	Games
+426	Gaming
+427	Garage Saleing
+428	Gardening
+429	Genealogy
+430	Geocaching
+431	Ghost hunting
+432	Glassblowing
+433	Glowsticking
+434	Gnoming
+435	Going to movies
+436	Golf
+437	Golfing
+438	Gongoozling
+439	Graffiti
+440	Grip Strength
+441	Guitar
+442	Gun Collecting
+443	Gunsmithing
+444	Gymnastics
+445	Gyotaku
+446	Handball
+447	Handwriting Analysis
+448	Hang gliding
+449	Herping
+450	Hiking
+451	Home Brewing
+452	Home Repair
+453	Home Theater
+454	Homebrewing
+455	Hooping
+456	Horse riding
+457	Hot air ballooning
+458	Hula Hooping
+459	Hunting
+460	Ice hockey
+461	Ice skating
+462	Iceskating
+463	Illusion
+464	Impersonations
+465	Inline skating
+466	Insect collecting
+467	Internet
+468	Inventing
+469	Jet Engines
+470	Jewelry Making
+471	Jigsaw Puzzles
+472	Jogging
+473	Judo
+474	Juggling
+475	Jukskei
+476	Jump Roping
+477	Kabaddi
+478	Kart racing
+479	Kayaking
+480	Keep A Journal
+481	Kitchen Chemistry
+482	Kite Boarding
+483	Kite flying
+484	Kites
+485	Kitesurfing
+486	Knapping
+487	Knife making
+488	Knife throwing
+489	Knitting
+491	Lacemaking
+492	Lacrosse
+493	Lapidary
+494	LARPing
+495	Laser tag
+496	Lasers
+497	Lawn Darts
+498	Learn to Play Poker
+499	Learning A Foreign Language
+500	Learning An Instrument
+501	Learning To Pilot A Plane
+502	Leather crafting
+503	Leathercrafting
+504	Lego building
+505	Legos
+506	Letterboxing
+507	Listening to music
+508	Locksport
+509	Machining
+510	Macramé
+511	Macrame
+512	Magic
+513	Mahjong
+514	Making Model Cars
+515	Marbles
+516	Marksmanship
+517	Martial arts
+518	Matchstick Modeling
+519	Meditation
+520	Metal detecting
+521	Meteorology
+522	Microscopy
+523	Mineral collecting
+524	Model aircraft
+525	Model building
+526	Model Railroading
+527	Model Rockets
+528	Modeling Ships
+529	Models
+530	Motor sports
+531	Motorcycles
+532	Mountain Biking
+533	Mountain Climbing
+534	Mountaineering
+535	Movie and movie memorabilia collecting
+536	Mushroom hunting/Mycology
+537	Musical Instruments
+538	Nail Art
+539	Needlepoint
+540	Netball
+541	Nordic skating
+542	Orienteering
+543	Origami
+544	Owning An Antique Car
+545	Paintball
+546	Painting
+547	Papermache
+548	Papermaking
+549	Parachuting
+550	Paragliding or Power Paragliding
+551	Parkour
+552	People Watching
+553	Photography
+554	Piano
+555	Pigeon racing
+556	Pinochle
+557	Pipe Smoking
+558	Planking
+559	Playing music
+560	Playing musical instruments
+561	Playing team sports
+562	Poker
+563	Pole Dancing
+564	Polo
+565	Pottery
+566	Powerboking
+567	Protesting
+568	Puppetry
+569	Puzzles
+570	Pyrotechnics
+571	Quilting
+572	R/C Boats
+573	R/C Cars
+574	R/C Helicopters
+575	R/C Planes
+576	Racing Pigeons
+577	Racquetball
+578	Radio-controlled car racing
+579	Rafting
+580	Railfans
+581	Rappelling
+582	Rapping
+583	Reading
+584	Reading To The Elderly
+585	Record collecting
+586	Relaxing
+587	Renaissance Faire
+588	Renting movies
+589	Rescuing Abused
+590	 Abandoned Animals
+591	Robotics
+592	Rock balancing
+593	Rock climbing
+594	Rock Collecting
+595	Rockets
+596	Rocking AIDS Babies
+597	Roleplaying
+598	Roller derby
+599	Roller skating
+600	Rugby
+601	Rugby league football
+602	Running
+603	Sailing
+604	Saltwater Aquariums
+605	Sand art
+606	Sand Castles
+607	Scrapbooking
+608	Sea glass collecting
+609	Self Defense
+610	Shark Fishing
+611	Shooting
+612	Singing In Choir
+613	Skeet Shooting
+614	Sketching
+615	Skimboarding
+617	Slack Lining
+618	Slacklining
+619	Sleeping
+620	Slingshots
+622	Soapmaking
+623	Socializing with friends/neighbors
+624	Speed Cubing
+626	Spelunkering
+627	Spending time with family/kids
+628	Stand-up comedy
+629	Stone skipping
+630	Storm Chasing
+631	Storytelling
+632	String Figures
+633	Sudoku
+634	Surf Fishing
+635	Survival
+636	Taekwondo
+638	Tatting
+639	Tea Tasting
+640	Tesla Coils
+641	Tetris
+642	Textiles
+643	Tombstone Rubbing
+644	Tool Collecting
+645	Toy Collecting
+646	Train Collecting
+647	Triathlon
+648	Tutoring Children
+649	TV watching
+650	Ultimate Frisbee
+651	Video game collecting
+652	Vintage cars
+653	Violin
+654	Volunteer
+655	Warhammer
+656	Watching sporting events
+657	Weather Watcher
+658	Web surfing
+660	Working In A Food Pantry
+661	Working on cars
+662	World Record Breaking
+663	Writing Music
+664	Writing Songs
+665	Ziplining
 \.
 
 
@@ -1279,7 +1186,7 @@ SELECT pg_catalog.setval('public.authorities_id_seq', 1, false);
 -- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: user
 --
 
-SELECT pg_catalog.setval('public.categories_id_seq', 2223, true);
+SELECT pg_catalog.setval('public.categories_id_seq', 1, false);
 
 
 --
