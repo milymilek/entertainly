@@ -2,6 +2,7 @@ package com.example.kosciuszkon.config.security;
 
 import com.example.kosciuszkon.config.authentication.AuthFailureHandler;
 import com.example.kosciuszkon.config.authentication.AuthSuccessHandler;
+import com.example.kosciuszkon.config.authentication.HeaderAuditorFilter;
 import com.example.kosciuszkon.config.authentication.JsonObjectAuthFilter;
 import com.example.kosciuszkon.config.authorization.JwtAuthorizationFilter;
 import com.example.kosciuszkon.repository.TokenRepository;
@@ -19,6 +20,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.header.HeaderWriterFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -39,6 +41,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final AuthFailureHandler authFailureHandler;
 
     private final TokenRepository tokenRepository;
+
+    private final HeaderAuditorFilter headerAuditorFilter;
 
     @Value("${auth.secret}")
     private String secret;
@@ -66,6 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin().permitAll()
                 .and()
                 .addFilter(jsonObjectAuthFilter())
+                .addFilterBefore(headerAuditorFilter, HeaderWriterFilter.class)
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), createUserDetailsManager(), secret, tokenRepository))
                 .exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));

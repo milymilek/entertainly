@@ -1,8 +1,10 @@
 <script>
     import Eliza from 'elizabot';
-    import { beforeUpdate, afterUpdate } from 'svelte';
+    import {beforeUpdate, afterUpdate} from 'svelte';
+    import {getAccessTokenFromCookie} from './common.js'
     import EventForm from './EventForm.svelte';
     import EventOrganizer from './EventOrganizer.svelte';
+
     export let group;
     let chat_selected = false;
     let selected_option = "chat"
@@ -20,13 +22,33 @@
 
     const eliza = new Eliza();
 
-    let comments = [
-
-    ];
+    let comments = [];
 
     function handleButtonClick(value) {
         selected_option = value;
         // console.log(value)
+    }
+
+    function handleChatButtonClick() {
+        fetch(`http://localhost:8080/chat/history/${group}`, {
+            method: "GET",
+            headers: {
+                "Authorization": getAccessTokenFromCookie(),
+            },
+        }).then(response => response.json())
+            .then(data => {
+                data.forEach(d => {
+                    const text = d.content
+                    comments = comments.concat({
+                        author: 'eliza',
+                        text
+                    });
+                })
+                // connect()
+            })
+            .catch((error) => {
+                console.log("Error: ", error);
+            })
     }
 
     function handleKeydown(event) {
@@ -59,6 +81,52 @@
             }, 200 + Math.random() * 200);
         }
     }
+    //
+    // function onMessageReceived(payload) {
+    //     var message = JSON.parse(payload.body);
+    //     console.log(message)
+    // }
+    //
+    // function onConnected() {
+    //     stompClient.subscribe('/topic/public', onMessageReceived);
+    //
+    //     throw fetch(`http://localhost:8080//username`, {
+    //         method: "GET",
+    //         headers: {
+    //             "Authorization": getAccessTokenFromCookie(),
+    //         },
+    //     }).then(response => {
+    //         console.log(response)
+    //         var chatMessage = {
+    //             sender: response.body,
+    //             categoryName: `${group}`,
+    //             type: 'JOIN'
+    //         };
+    //         stompClient.send("/app/chat.addUser",
+    //             {},
+    //             JSON.stringify(chatMessage)
+    //         )
+    //     })
+    //
+    // }
+    //
+    // function connect(event) {
+    //
+    //     var socket = new SockJS('/ws');
+    //
+    //
+    //     stompClient = Stomp.over(socket);
+    //
+    //     var header = {
+    //         "Authorization" : getAccessTokenFromCookie(),
+    //     }
+    //
+    //     stompClient.connect(header, onConnected, onError);
+    //
+    //     event.preventDefault();
+    // }
+
+
 </script>
 
 <style>
@@ -69,6 +137,7 @@
         max-height: 100%;
         /*max-width: 320px;*/
     }
+
     .eliza {
         text-align: left;
     }
@@ -112,33 +181,35 @@
 <input type="radio" class="btn-check" name="chat_or_group_options" id="event_option" value="{false}" autocomplete="off" bind:group={chat_selected}>
 <label class="btn btn-secondary" for="event_option">Wydarzenia</label> -->
 
-<input type="button" class="btn-check" name="chat_option" id="chat_option" on:click={() => handleButtonClick("chat")}>
+<input type="button" class="btn-check" name="chat_option" id="chat_option" on:click={() => handleChatButtonClick()}>
 <label class="btn btn-secondary" for="chat_option">Chat</label>
-<input type="button" class="btn-check" name="events_option" id="events_option" on:click={() => handleButtonClick("events")}>
+<input type="button" class="btn-check" name="events_option" id="events_option"
+       on:click={() => handleButtonClick("events")}>
 <label class="btn btn-secondary" for="events_option">Wydarzenia</label>
-<input type="button" class="btn-check" name="options_button" id="add_event_option" on:click={() => handleButtonClick("add_event")}>
+<input type="button" class="btn-check" name="options_button" id="add_event_option"
+       on:click={() => handleButtonClick("add_event")}>
 <label class="btn btn-secondary" for="add_event_option">Dodaj wydarzenie</label>
 
 
 <h1>{group}</h1>
 <!-- {#if chat_selected === true} -->
 {#if selected_option === "chat"}
-<div class="chat m-auto bg-opacity-50 bg-gradient">
+    <div class="chat m-auto bg-opacity-50 bg-gradient">
 
-    <div class="scrollable" bind:this={div}>
-        {#each comments as comment}
-            <article class={comment.author}>
-                <span>{comment.text}</span>
-            </article>
-        {/each}
+        <div class="scrollable" bind:this={div}>
+            {#each comments as comment}
+                <article class={comment.author}>
+                    <span>{comment.text}</span>
+                </article>
+            {/each}
+        </div>
+
+        <input class="w-50 m-auto" on:keydown={handleKeydown}>
     </div>
-
-    <input class="w-50 m-auto" on:keydown={handleKeydown}>
-</div>
 {:else if selected_option === "events"}
     <EventOrganizer {group}/>
 
 {:else if selected_option === "add_event"}
     <EventForm {group}/>
-    
+
 {/if}
