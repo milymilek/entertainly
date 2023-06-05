@@ -19,3 +19,14 @@ class InterestResponse(BaseModel):
     user_id: int
     interest_reco: str
 
+
+class AssignGroupRequest(BaseModel):
+    user_id: int
+
+
+class AssignGroupResponse(BaseModel):
+    user_id: int
+    groups: list[str]
+
+
+

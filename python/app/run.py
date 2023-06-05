@@ -3,7 +3,8 @@ import os
 from fastapi import FastAPI, APIRouter
 from graph.InterestTraversal import InterestTraversal
 
-from schemas.interest_models import InterestResponse, InterestRequest, MessageType
+from schemas.interest_models import InterestResponse, InterestRequest, \
+                                    AssignGroupResponse, AssignGroupRequest, MessageType
 
 router = APIRouter(
     tags=['items'],
@@ -31,12 +32,22 @@ async def search_preference(request: InterestRequest):
     user_id = request.user_id
     msg_type = request.msg_type
 
-    if msg_type != MessageType.END:
-        msg_type = True if msg_type == MessageType.ACCEPT else False
-        interest_reco = interest(user_id, msg_type)
-        response = {"user_id": user_id, "interest_reco": interest_reco}
-    else:
-        # writeToDatabaseAndAssignGroup(user_id)
-        print("end")
-        response = {"user_id": user_id, "interest_reco": ""}
+    match msg_type:
+        case MessageType.START:
+            interest_reco = interest.init_user(user_id)
+        case MessageType.ACCEPT | MessageType.REJECT:
+            ans = True if msg_type == MessageType.ACCEPT else False
+            interest_reco = interest.response(user_id, ans)
+
+    response = {"user_id": user_id, "interest_reco": interest_reco}
+    return response
+
+
+@app.post("/assign_group", response_model=AssignGroupResponse)
+async def assign_group(request: AssignGroupRequest):
+    user_id = request.user_id
+    groups = interest.assign_user(user_id)
+
+    response = {"user_id": user_id, "groups": groups}
+
     return response
