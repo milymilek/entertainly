@@ -1,0 +1,650 @@
+,HOBBIES,labels
+0,Acting,19
+1,Action Figures,26
+2,Adventure park,40
+3,Aerobics,4
+4,Air hockey,7
+5,Air sports,7
+6,Airbrushing,1
+7,Aircraft,36
+8,Aircraft spotting,31
+9,Airsoft,31
+10,All-Terrain vehicles,6
+11,Alternate reality games,26
+12,Alternative,19
+13,Amateur Radio,8
+14,Amateur astronomy,6
+15,Amateur geology,6
+16,Amateur meteorology,6
+17,American football,8
+18,Amusement Park,40
+19,Animal,36
+20,Animal care,2
+21,Antiques,36
+22,Antiquing,25
+23,Antiquities,30
+24,Aquariums,16
+25,Arcade Games,26
+26,Archaeology,3
+27,Archery,28
+28,Archery/Crossbow,29
+29,Architecture,3
+30,Aromatherapy,2
+31,Art Activities,41
+32,Art Collecting / Collectibles,12
+33,Art and Crafts,21
+34,Art collecting,3
+35,Art/antique collecting,33
+36,Arts and Crafts,21
+37,Arts/cultural,33
+38,Artwork,19
+39,Association football,8
+40,Astrology,23
+41,Astronomy,3
+42,Audiophilia,44
+43,Australian Football League,8
+44,Auto audiophilia,44
+45,Auto racing,37
+46,Autographs,43
+47,Automotive work/repair,2
+48,BMX tricks,9
+49,Back packing,0
+50,Backgamon,19
+51,Backpacking,15
+52,Badge Collecting,0
+53,Badminton,28
+54,Baking,30
+55,Ballet,19
+56,Ballet Dancing,42
+57,Ballooning,14
+58,Scuba,30
+59,Scuba Diving,15
+60,Sculling or Rowing,9
+61,Sculpting,21
+62,Sculpture,3
+63,Seaglass collecting,25
+64,Seashell collecting,12
+65,Seashells,12
+66,Self-Improvement,49
+67,Self-Improvement Courses,34
+68,Service,30
+69,Sewing,30
+70,Shoes,0
+71,Shooting guns,29
+72,Shooting sport,9
+73,Shopping,0
+74,Shopping for latest trends,25
+75,Shortwave listening,14
+76,Show Choir,46
+77,Sightseeing,35
+78,Singing,0
+79,Singing Lessons,34
+80,Singing games,14
+81,Singing/composing music,34
+82,Skate Boarding,18
+83,Skateboarding,15
+84,Skateboarding/rollerblading,18
+85,Skating,28
+86,Skiing,28
+87,Skill games,26
+88,playing soccer,22
+89,free diving,38
+90,diving,28
+91,Skincare Regime,14
+92,Sky diving,35
+93,Skydiving,35
+94,Skype,35
+95,Sky running,10
+96,Sledding,18
+97,Slot car racing,37
+98,Snake,30
+99,Snooker,28
+100,Snorkeling,35
+101,Snow Biking,14
+102,Snow Skiing,17
+103,Snowboarding,17
+104,Snowmobile Riding,18
+105,Snowmobiles,15
+106,Snowmobiling,18
+107,Snowshoeing,18
+108,Soap making,2
+109,Soccer,8
+110,Social,30
+111,Social Networking,35
+112,Soft Rock,14
+113,Softball,8
+114,Space Exploration,23
+115,Speed Skating,42
+116,Spider,30
+117,Spinning,30
+118,Sport fishing,15
+119,Sporting dog field trials,9
+120,Sporting interests,14
+121,Sports,8
+122,Sports Cards,36
+123,Sports memorabilia,36
+124,Sports on TV,49
+125,Squash,30
+126,Stained Glass,21
+127,Stamp Collecting,12
+128,Stamps,36
+129,Stargazing,35
+130,Stereo,30
+131,Stocks,30
+132,Stone collecting,25
+133,Street Racing,37
+134,Street games,26
+135,Sudoku Puzzles,24
+136,Sunbathing,35
+137,Surfing,30
+138,Survey date,0
+139,Sweepstakes,45
+140,Sweepstake,45
+141,Swimming,28
+142,Swimming pool,38
+143,Table Tennis,7
+144,Table football,7
+145,Tabletop games,24
+146,Tai Chi,10
+147,Tango Dance,42
+148,Target shooting,29
+149,Tarot,19
+150,Tarot card reading,25
+151,Taxidermy,35
+152,Team Games,36
+153,Telescopes,30
+154,Ten Pin Bowling,4
+155,Tennis,28
+156,Texting,2
+157,Theater Sports,41
+158,Theater/Performing Arts,33
+159,Theatre,19
+160,Third person shooter games,24
+161,Thriller,19
+162,Tie dying,10
+163,Tile-based games,24
+164,Timeshare,25
+165,Touch football,7
+166,Tour skating,0
+167,Toys,0
+168,Track &amp,25
+169, Field,8
+170,Train Spotting,14
+171,Trainspotting,43
+172,Trap,30
+173,Travel,19
+174,Travel games,25
+175,Traveling,30
+176,Traveling and exploration,49
+177,Treasure Hunting,14
+178,Tree climbing,15
+179,Trekkie,13
+180,Trekking,35
+181,Turtle,30
+182,Tutoring,34
+183,Types of Recreation,41
+184,US Travel,19
+185,Urban exploration,19
+186,Vacation cruises,40
+187,Vacations,49
+188,Vehicle restoration,2
+189,Veterans,36
+190,Video Games,26
+191,Video gaming,26
+192,DVD,19
+193,Video,8
+194,Videophilia,44
+195,Vintage Books,12
+196,Vintage car,36
+197,Vintage clothing,25
+198,Vitamin supplements,14
+199,Volleyball,8
+200,Volunteering,19
+201,Walking,0
+202,Walking and Hiking,22
+203,Walking/health,33
+204,Wall Art,3
+205,Want further mailings,25
+206,Wargames,26
+207,Warships,19
+208,Watching Movies,22
+209,Watching Sports,22
+210,Watching TV,22
+211,Water Polo,38
+212,Water Skiing,17
+213,Water sports,38
+214,Watercolor Paintings,21
+215,Weather Forecasting,6
+216,Weaving,30
+217,Websites,36
+218,Weight training,9
+219,Weightlifting,28
+220,White Water Rafting,18
+221,Whitewater rafting,15
+222,Wildlife safari   Snorkeling A,18
+223,Wildlife,36
+224,Wind Surfing,35
+225,Windsurfing,31
+226,Windsurfing Kayaking,35
+227,Wine Appreciation,2
+228,Wine Making,2
+229,Wine tasting,25
+230,Wines,36
+231,Wingsuit flying,25
+232,Wood Carving,2
+233,Wood Working,2
+234,Woodworking,2
+235,Word games,25
+236,World news or politics,49
+237,Worldbuilding,25
+238,Worship Team,46
+239,Wrestling,28
+240,Writing,30
+241,Yachting,15
+242,Yo-yoing,39
+243,YoYo,10
+244,Yoga,0
+245,Youth Band,41
+246,Youth Group,41
+247,Zumba,19
+248,cooperative games,26
+249,courses,19
+250,deck building games,25
+251,insects,36
+252,knotting,25
+253,leaves,30
+254,magician,19
+255,angling/Fly fishing,15
+256,real time games,26
+257,rocks,0
+258,strategy games,26
+259,thematic games,25
+260,Aeromodeling,27
+261,Airsofting,31
+262,Animal fancy,10
+263,dogs,36
+264,pets,30
+265,Animals,36
+266,Aqua-lung,10
+267,Aquarium,19
+268,Arts,3
+269,Backgammon,24
+270,Base Jumping,14
+271,Baseball,8
+272,Basketball,8
+273,Baton Twirling,39
+274,Beach Volleyball,38
+275,Sun tanning,1
+276,Beach,19
+277,Beachcombing,15
+278,Beadwork,25
+279,Beatboxing,39
+280,Beekeeping,2
+281,Bell Ringing,29
+282,Belly Dancing,42
+283,Bicycle Polo,4
+284,Bicycling,4
+285,Billiards,4
+286,Bird watching,35
+287,Birding,15
+288,Birdwatching,15
+289,Blacksmithing,2
+290,Blogging,14
+291,BMX,4
+292,Board games,26
+293,Board sports,9
+294,BoardGames,24
+295,Boating,0
+296,Body Building,9
+297,Bodybuilding,9
+298,Bonsai Tree,14
+299,Book collecting,12
+300,Bookbinding,1
+301,Boomerangs,39
+302,Bowling,28
+303,Boxing,28
+304,Brazilian jiu-jitsu,4
+305,Breakdancing,25
+306,Brewing Beer,0
+307,Bridge,0
+308,Bridge Building,3
+309,Bringing Food To The Disabled,27
+310,Building Dollhouses,27
+311,Bus spotting,14
+312,Butterfly Watching,10
+313,Button Collecting,13
+314,Cake Decorating,2
+315,Calligraphy,21
+316,Camping,30
+317,Candle making,25
+318,Canoeing,15
+319,Car Racing,37
+320,Card collecting,26
+321,Cartooning,3
+322,Casino Gambling,41
+323,Cave Diving,15
+324,Ceramics,3
+325,Cheerleading,8
+326,Chess,28
+327,Church/church activities,46
+328,Cigar Smoking,0
+329,Climbing,0
+330,Cloud Watching,0
+331,Coin Collecting,12
+332,Collecting,30
+333,Collecting Antiques,14
+334,Collecting Artwork,19
+335,Collecting Hats,25
+336,Collecting Music Albums,12
+337,Collecting RPM Records,12
+338,Collecting Sports Cards,27
+339,Collecting Swords,29
+340,Color guard,19
+341,Coloring,30
+342,Comic book collecting,12
+343,Compose Music,41
+344,Computer activities,41
+345,Computer programming,41
+346,Conworlding,25
+347,Cooking,0
+348,Cosplay,21
+349,Cosplaying,39
+350,Couponing,10
+351,Crafts,30
+352,Creative writing,21
+353,Cricket,8
+354,Crochet,1
+355,Crocheting,1
+356,Cross-Stitch,1
+357,Crossword Puzzles,24
+358,Cryptography,23
+359,Curling,30
+360,Cycling,0
+361,Dance,28
+362,Dancing,19
+363,Darts,28
+364,Debate,30
+365,Deltiology,14
+366,Diecast Collectibles,12
+367,Digital arts,33
+368,Digital Photography,3
+369,Disc golf,15
+370,Do it yourself,10
+371,Dodgeball,10
+372,Dog sport,9
+373,Dolls,30
+374,Dominoes,24
+375,Dowsing,0
+376,Drama,8
+377,Drawing,30
+378,Driving,0
+379,Dumpster Diving,18
+380,Eating out,0
+381,Educational Courses,41
+382,Electronics,3
+383,Element collecting,13
+384,Embroidery,3
+385,Entertaining,30
+386,Equestrianism,9
+387,Exercise,0
+388,Exhibition drill,0
+389,Falconry,2
+390,Fast cars,25
+391,Felting,10
+392,Fencing,28
+393,Field hockey,7
+394,Figure skating,42
+395,Fire Poi,10
+396,Fishing,15
+397,Fishkeeping,2
+398,Flag Football,7
+399,Floorball,24
+400,Floral Arrangements,49
+401,Flower arranging,2
+402,Flower collecting and pressing,2
+403,Fly Tying,10
+404,Flying,30
+405,Footbag,25
+406,Football,8
+407,Foraging,30
+408,Foreign language learning,34
+409,Fossil hunting,14
+410,Four Wheeling,10
+411,Freshwater Aquariums,16
+412,Frisbee Golf,24
+413,Gambling,30
+414,Games,19
+415,Gaming,30
+416,Garage Saleing,2
+417,Gardening,0
+418,Genealogy,36
+419,Geocaching,35
+420,Ghost hunting,14
+421,Glassblowing,25
+422,Glowsticking,39
+423,Gnoming,25
+424,Going to movies,22
+425,Golf,28
+426,Golfing,15
+427,Gongoozling,25
+428,Graffiti,3
+429,Grip Strength,29
+430,Guitar,8
+431,Gun Collecting,13
+432,Gunsmithing,2
+433,Gymnastics,28
+434,Gyotaku,11
+435,Handball,8
+436,Handwriting Analysis,34
+437,Hang gliding,15
+438,Herping,10
+439,Hiking,30
+440,Home Brewing,2
+441,Home Repair,2
+442,Home Theater,19
+443,Homebrewing,2
+444,Hooping,25
+445,Horse riding,9
+446,Hot air ballooning,18
+447,Hula Hooping,39
+448,Hunting,30
+449,Ice hockey,7
+450,Ice skating,42
+451,Iceskating,18
+452,Illusion,30
+453,Impersonations,43
+454,Inline skating,42
+455,Insect collecting,14
+456,Internet,36
+457,Inventing,30
+458,Jet Engines,36
+459,Jewelry Making,2
+460,Jigsaw Puzzles,24
+461,Jogging,0
+462,Judo,28
+463,Juggling,39
+464,Jukskei,10
+465,Jump Roping,5
+466,Kabaddi,4
+467,Kart racing,37
+468,Kayaking,35
+469,Keep A Journal,49
+470,Kitchen Chemistry,2
+471,Kite Boarding,15
+472,Kite flying,15
+473,Kites,49
+474,Kitesurfing,35
+475,Knapping,39
+476,Knife making,29
+477,Knife throwing,29
+478,Knitting,0
+479,Lacemaking,2
+480,Lacrosse,8
+481,Lapidary,2
+482,LARPing,10
+483,Laser tag,25
+484,Lasers,19
+485,Lawn Darts,4
+486,Learn to Play Poker,27
+487,Learning A Foreign Language,20
+488,Learning An Instrument,20
+489,Learning To Pilot A Plane,20
+490,Leather crafting,2
+491,Leathercrafting,2
+492,Lego building,3
+493,Legos,19
+494,Letterboxing,43
+495,Listening to music,22
+496,Locksport,25
+497,Machining,2
+498,Macramé,48
+499,Macrame,48
+500,Magic,30
+501,Mahjong,10
+502,Making Model Cars,27
+503,Marbles,25
+504,Marksmanship,34
+505,Martial arts,29
+506,Matchstick Modeling,25
+507,Meditation,0
+508,Metal detecting,2
+509,Meteorology,6
+510,Microscopy,19
+511,Mineral collecting,14
+512,Model aircraft,27
+513,Model building,27
+514,Model Railroading,27
+515,Model Rockets,27
+516,Modeling Ships,14
+517,Models,30
+518,Motor sports,37
+519,Motorcycles,36
+520,Mountain Biking,17
+521,Mountain Climbing,17
+522,Mountaineering,17
+523,Movie and movie memorabilia collecting,12
+524,Mushroom hunting/Mycology,14
+525,Musical Instruments,41
+526,Nail Art,25
+527,Needlepoint,25
+528,Netball,28
+529,Nordic skating,42
+530,Orienteering,17
+531,Origami,11
+532,Owning An Antique Car,27
+533,Paintball,25
+534,Painting,19
+535,Papermache,25
+536,Papermaking,2
+537,Parachuting,4
+538,Paragliding or Power Paragliding,5
+539,Parkour,0
+540,People Watching,22
+541,Photography,3
+542,Piano,19
+543,Pigeon racing,9
+544,Pinochle,21
+545,Pipe Smoking,2
+546,Planking,15
+547,Playing music,20
+548,Playing musical instruments,34
+549,Playing team sports,29
+550,Poker,30
+551,Pole Dancing,42
+552,Polo,30
+553,Pottery,3
+554,Powerboking,39
+555,Protesting,0
+556,Puppetry,2
+557,Puzzles,30
+558,Pyrotechnics,39
+559,Quilting,3
+560,R/C Boats,32
+561,R/C Cars,32
+562,R/C Helicopters,32
+563,R/C Planes,32
+564,Racing Pigeons,14
+565,Racquetball,4
+566,Radio-controlled car racing,27
+567,Rafting,15
+568,Railfans,14
+569,Rappelling,31
+570,Rapping,0
+571,Reading,30
+572,Reading To The Elderly,20
+573,Record collecting,12
+574,Relaxing,30
+575,Renaissance Faire,25
+576,Renting movies,22
+577,Rescuing Abused,0
+578, Abandoned Animals,14
+579,Robotics,3
+580,Rock balancing,10
+581,Rock climbing,17
+582,Rock Collecting,13
+583,Rockets,19
+584,Rocking AIDS Babies,25
+585,Roleplaying,47
+586,Roller derby,26
+587,Roller skating,42
+588,Rugby,8
+589,Rugby league football,4
+590,Running,0
+591,Sailing,28
+592,Saltwater Aquariums,16
+593,Sand art,3
+594,Sand Castles,10
+595,Scrapbooking,14
+596,Sea glass collecting,25
+597,Self Defense,29
+598,Shark Fishing,15
+599,Shooting,30
+600,Singing In Choir,34
+601,Skeet Shooting,17
+602,Sketching,1
+603,Skimboarding,10
+604,Slack Lining,10
+605,Slacklining,10
+606,Sleeping,0
+607,Slingshots,39
+608,Soapmaking,2
+609,Socializing with friends/neighbors,49
+610,Speed Cubing,25
+611,Spelunkering,25
+612,Spending time with family/kids,49
+613,Stand-up comedy,6
+614,Stone skipping,10
+615,Storm Chasing,10
+616,Storytelling,30
+617,String Figures,29
+618,Sudoku,26
+619,Surf Fishing,15
+620,Survival,0
+621,Taekwondo,28
+622,Tatting,10
+623,Tea Tasting,10
+624,Tesla Coils,23
+625,Tetris,19
+626,Textiles,3
+627,Tombstone Rubbing,10
+628,Tool Collecting,2
+629,Toy Collecting,12
+630,Train Collecting,13
+631,Triathlon,9
+632,Tutoring Children,34
+633,TV watching,0
+634,Ultimate Frisbee,24
+635,Video game collecting,26
+636,Vintage cars,27
+637,Violin,8
+638,Volunteer,30
+639,Warhammer,26
+640,Watching sporting events,22
+641,Weather Watcher,6
+642,Web surfing,35
+643,Working In A Food Pantry,27
+644,Working on cars,27
+645,World Record Breaking,0
+646,Writing Music,41
+647,Writing Songs,29
+648,Ziplining,10

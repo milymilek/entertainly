@@ -8,4 +8,13 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+    networks:
+      entertainly:
+        ipv4_address: 172.20.10.2
 
+networks:
+  entertainly:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.10.0/24
