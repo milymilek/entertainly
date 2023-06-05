@@ -1,17 +1,20 @@
 package com.example.kosciuszkon.service;
 
-import com.example.kosciuszkon.dto.EventDTO;
+import com.example.kosciuszkon.dto.request.EventDTO;
+import com.example.kosciuszkon.dto.request.EventUpdate;
 import com.example.kosciuszkon.entity.Categories;
 import com.example.kosciuszkon.entity.Event;
 import com.example.kosciuszkon.entity.User;
+import com.example.kosciuszkon.exceptions.EventNotFoundException;
 import com.example.kosciuszkon.exceptions.WrongEventDetailsException;
 import com.example.kosciuszkon.repository.CategoryRepository;
 import com.example.kosciuszkon.repository.EventRepository;
+import com.example.kosciuszkon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,9 +22,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EventService {
     private final EventRepository eventRepository;
+    private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
 
-    public void createEvent(EventDTO eventDetails) {
+    public void createEvent(EventDTO eventDetails, Long creatorId) {
         Categories category = categoryRepository.findByName(eventDetails.getCategoryName())
                 .orElseThrow(WrongEventDetailsException::new);
         Event event = Event.builder()
@@ -30,7 +34,8 @@ public class EventService {
                 .address(eventDetails.getAddress())
                 .description(eventDetails.getDescription())
                 .category(category)
-                .participants(new ArrayList<>())
+                .participants(new HashSet<>())
+                .eventCreatorId(creatorId)
                 .build();
         eventRepository.save(event);
     }
@@ -42,7 +47,7 @@ public class EventService {
     }
 
     public Event getEventDetails(Long eventId) {
-        return eventRepository.getOne(eventId);
+        return eventRepository.findById(eventId).orElseThrow(EventNotFoundException::new);
     }
 
     public List<Event> getEventsInCategory(String categoryName) {
@@ -54,6 +59,32 @@ public class EventService {
     }
 
     public void deleteEvent(Long eventId, Long creatorId) {
+        Event event = eventRepository.findByIdAndEventCreatorId(eventId, creatorId).orElseThrow(EventNotFoundException::new);
+        eventRepository.delete(event);
+    }
 
+    public Event updateEventTime(EventUpdate eventUpdate, Long userId) {
+        Event event = eventRepository.findByIdAndEventCreatorId(eventUpdate.getEventId(), userId).orElseThrow(EventNotFoundException::new);
+        event.setStartTime(eventUpdate.getNewStartTime());
+        event.setEndTime(eventUpdate.getNewEndTime());
+        eventRepository.save(event);
+        return event;
+    }
+
+    public List<Event> getUserEvents(Long userId) {
+        return eventRepository.findAll()
+                .stream()
+                .filter(event -> event.getParticipants()
+                        .stream()
+                        .anyMatch(user -> user.getId().equals(userId))
+                )
+                .collect(Collectors.toList());
+    }
+
+    public void leaveEvent(Long eventId, Long userId) {
+        Event event = eventRepository.findById(eventId).orElseThrow(EventNotFoundException::new);
+        User user = userRepository.findById(userId);
+        event.getParticipants().remove(user);
+        eventRepository.save(event);
     }
 }

@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @Entity(name = "events")
 @ToString
@@ -21,11 +21,6 @@ public class Event {
 
     private Long eventCreatorId;
 
-    //TODO add event creator, and allow him to delete event
-    //TODO leave event
-    //TODO edit event time
-    //TODO all event for given user
-
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;
@@ -37,6 +32,6 @@ public class Event {
     @OneToOne
     private Categories category;
 
-    @OneToMany
-    private List<User> participants;
+    @ManyToMany
+    private Set<User> participants;
 }

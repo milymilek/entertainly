@@ -1,7 +1,9 @@
 package com.example.kosciuszkon.controller;
 
-import com.example.kosciuszkon.dto.EventDTO;
+import com.example.kosciuszkon.dto.request.EventDTO;
+import com.example.kosciuszkon.dto.request.EventUpdate;
 import com.example.kosciuszkon.entity.Event;
+import com.example.kosciuszkon.exceptions.EventNotFoundException;
 import com.example.kosciuszkon.exceptions.WrongEventDetailsException;
 import com.example.kosciuszkon.service.EventService;
 import com.example.kosciuszkon.service.UserService;
@@ -22,18 +24,20 @@ public class EventController {
     private final UserService userService;
 
     @PostMapping("/new")
-    public void createEvent(@RequestBody EventDTO eventDetails) {
-        eventService.createEvent(eventDetails);
+    public void createEvent(@AuthenticationPrincipal UsernamePasswordAuthenticationToken user,
+                            @RequestBody EventDTO eventDetails) {
+        Long userId = userService.getUserId(user.getName());
+        eventService.createEvent(eventDetails, userId);
     }
 
-    @GetMapping("/details")
-    public ResponseEntity<Event> getEventDetails(@RequestParam Long eventId) {
-        return ResponseEntity.ok().body(eventService.getEventDetails(eventId));
+    @GetMapping("/details/{id}")
+    public ResponseEntity<Event> getEventDetails(@PathVariable Long id) {
+        return ResponseEntity.ok().body(eventService.getEventDetails(id));
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Event>> getEventsInCategory(@RequestParam String categoryName) {
-        return ResponseEntity.ok().body(eventService.getEventsInCategory(categoryName));
+    @GetMapping("/all/{category}")
+    public ResponseEntity<List<Event>> getEventsInCategory(@PathVariable String category) {
+        return ResponseEntity.ok().body(eventService.getEventsInCategory(category));
     }
 
     @PostMapping("/signup")
@@ -42,8 +46,40 @@ public class EventController {
         eventService.joinEvent(eventId, userService.findByUsername(user.getName()));
     }
 
+    @PatchMapping("/update")
+    public Event updateEvent(@AuthenticationPrincipal UsernamePasswordAuthenticationToken user,
+                            @RequestBody EventUpdate eventUpdate) {
+        Long userId = userService.getUserId(user.getName());
+        return eventService.updateEventTime(eventUpdate, userId);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteEvent(@AuthenticationPrincipal UsernamePasswordAuthenticationToken user,
+                            @PathVariable Long id) {
+        Long userId = userService.getUserId(user.getName());
+        eventService.deleteEvent(id, userId);
+    }
+
+    @GetMapping("/myEvents")
+    public List<Event> findUserEvents(@AuthenticationPrincipal UsernamePasswordAuthenticationToken user) {
+        Long userId = userService.getUserId(user.getName());
+        return eventService.getUserEvents(userId);
+    }
+
+    @PatchMapping("/leave/{id}")
+    public void leaveEvent(@AuthenticationPrincipal UsernamePasswordAuthenticationToken user,
+                           @PathVariable Long id) {
+        Long userId = userService.getUserId(user.getName());
+        eventService.leaveEvent(id, userId);
+    }
+
     @ExceptionHandler(WrongEventDetailsException.class)
     public String wrongEventDetailsException() {
         return "Wrong event details";
+    }
+
+    @ExceptionHandler(EventNotFoundException.class)
+    public String eventNotFoundExceptionHandler() {
+        return "Event not found";
     }
 }
