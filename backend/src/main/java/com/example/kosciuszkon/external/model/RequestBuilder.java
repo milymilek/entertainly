@@ -1,5 +1,6 @@
 package com.example.kosciuszkon.external.model;
 
+import com.example.kosciuszkon.external.model.request.BaseRequest;
 import com.google.gson.Gson;
 
 import java.net.URI;
@@ -9,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 
 public class RequestBuilder {
 
-    public static HttpRequest buildRequest(RecommendationRequest request, URI uri) {
+    public static HttpRequest buildRequest(BaseRequest request, URI uri) {
         var jsonBody = new Gson().toJson(request);
         return HttpRequest.newBuilder()
                 .uri(uri)

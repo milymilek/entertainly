@@ -1,9 +1,11 @@
 package com.example.kosciuszkon.external;
 
-import com.example.kosciuszkon.external.model.RecommendationRequest;
-import com.example.kosciuszkon.external.model.RecommendationResponse;
+import com.example.kosciuszkon.external.model.request.RecommendationRequest;
+import com.example.kosciuszkon.external.model.request.ResultRequest;
+import com.example.kosciuszkon.external.model.response.RecommendationResponse;
 import com.example.kosciuszkon.external.model.RequestBuilder;
 import com.example.kosciuszkon.external.model.ResponseBuilder;
+import com.example.kosciuszkon.external.model.response.ResultResponse;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -26,6 +28,19 @@ public class RecommendationServiceClient {
                 .proxy(ProxySelector.getDefault())
                 .build()
                 .send(HttpRequest, HttpResponse.BodyHandlers.ofString());
-        return ResponseBuilder.buildResponse(response);
+        return ResponseBuilder.buildRecommendationResponse(response);
+    }
+
+    public ResultResponse send(ResultRequest request)
+            throws URISyntaxException, IOException, InterruptedException {
+        String serviceUri = "http://localhost:8000";
+        String path = "/assign_group";
+        var HttpRequest = RequestBuilder.buildRequest(request, new URI(serviceUri + path));
+        HttpResponse<String> response = HttpClient
+                .newBuilder()
+                .proxy(ProxySelector.getDefault())
+                .build()
+                .send(HttpRequest, HttpResponse.BodyHandlers.ofString());
+        return ResponseBuilder.buildResultResponse(response);
     }
 }
