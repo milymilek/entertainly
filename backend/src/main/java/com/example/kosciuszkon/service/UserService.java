@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +27,7 @@ public class UserService {
             return null;
         }
         user.setPassword("{bcrypt}" + new BCryptPasswordEncoder().encode(user.getPassword()));
+        user.setId(getNextId());
         var authority = new Authority();
         authority.setAuthority("ROLE_USER");
         authority.setUsername(user);
@@ -43,6 +45,23 @@ public class UserService {
     public User findByUsername(String userName){
         return userRepository.findByUsername(userName)
                 .orElseThrow(UserNotFoundException::new);
+    }
+
+    private Long getNextId() {
+        return userRepository.findAll()
+                .stream()
+                .map(u -> {
+                    try {
+                        return u.getId();
+                    } catch (NullPointerException e) {
+                        return 0L;
+                    }
+                })
+                .max(Comparator.naturalOrder()).orElse(0L) + 1;
+    }
+
+    public Long getUserId(String username) {
+        return findByUsername(username).getId();
     }
 }
 

@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, String> {
 
     Optional<User> findByUsername(String s);
-
+    User findById(Long id);
 //    @Query(value = "select uc.users_username from categories c join users_categories uc " +
 //            "on c.name = :c_name and uc.categories_id = c.id;", nativeQuery = true)
 //    List<String> findUsernamesByCategoryName(@Param(value = "c_name") String name);

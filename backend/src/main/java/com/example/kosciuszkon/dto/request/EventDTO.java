@@ -1,4 +1,4 @@
-package com.example.kosciuszkon.dto;
+package com.example.kosciuszkon.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
