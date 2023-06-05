@@ -29,6 +29,14 @@ public class CategoryService {
         });
     }
 
+    @Transactional
+    public void addCategoriesToUser(List<String> categories, User user){
+        categories.forEach(name -> {
+            var category = repository.findByName(name);
+            user.getCategories().add(category.get());
+        });
+    }
+
     public List<Categories> getForLoggedUser(User user) {
         return user.getCategories();
     }

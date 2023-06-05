@@ -1,17 +1,17 @@
-package com.example.kosciuszkon.external.model;
+package com.example.kosciuszkon.external.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class RecommendationRequest implements Serializable {
+public class ResultResponse {
     private Long user_id;
-    private String msg_type;
+    private List<String> groups;
 }
