@@ -6,8 +6,8 @@
     let eventDetails = {
       startTime: '',
       endTime: '',
-      address: '1',
-      description: '1',
+      address: '',
+      description: '',
       categoryName: group
     };
 

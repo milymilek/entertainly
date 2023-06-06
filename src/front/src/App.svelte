@@ -8,6 +8,7 @@
     import Dashboard from "./lib/Dashboard.svelte";
     import Navigation from "./lib/Navigation.svelte";
     import Group from "./lib/Group.svelte";
+    import EventOrganizer from "./lib/EventOrganizer.svelte";
     export let stage = 0, max_questions = 2, group;
     let board = [
         {
@@ -94,6 +95,8 @@
         <Dashboard bind:stage bind:max_questions columnItems={dashboard}/>
     {:else if stage == 10}
         <Group bind:group></Group>
+    {:else if stage == 99}
+        <EventOrganizer {group} myEvents={true} />
     {:else}
         <MyHobbies bind:group bind:stage columnItems={dashboard_card}/>
     {/if}

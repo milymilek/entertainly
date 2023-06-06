@@ -1,10 +1,10 @@
 <script>
     let login = true;
     export let stage;
-    let username = 'user';
-    let email = 'user@mail.com';
-    let password = 'pass';
-    let confirmedPassword = 'pass';
+    let username = '';
+    let email = '';
+    let password = '';
+    let confirmedPassword = '';
     // function submit() {
     //     console.log("xd")
     //     let creds = {

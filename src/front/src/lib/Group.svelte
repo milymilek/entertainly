@@ -190,9 +190,9 @@
 <input type="button" class="btn-check" name="events_option" id="events_option"
        on:click={() => handleButtonClick("events")}>
 <label class="btn btn-secondary" for="events_option">Wydarzenia</label>
-<input type="button" class="btn-check" name="my_events_option" id="my_events_option"
-       on:click={() => handleButtonClick("my_events")}>
-<label class="btn btn-secondary" for="my_events_option">Moje wydarzenia</label>
+<!--<input type="button" class="btn-check" name="my_events_option" id="my_events_option"-->
+<!--       on:click={() => handleButtonClick("my_events")}>-->
+<!--<label class="btn btn-secondary" for="my_events_option">Moje wydarzenia</label>-->
 <input type="button" class="btn-check" name="options_button" id="add_event_option"
        on:click={() => handleButtonClick("add_event")}>
 <label class="btn btn-secondary" for="add_event_option">Dodaj wydarzenie</label>
@@ -218,8 +218,8 @@
 {:else if selected_option === "events"}
     <EventOrganizer {group} myEvents={false}/>
 
-{:else if selected_option === "my_events"}
-    <EventOrganizer {group} myEvents={true} />
+<!--{:else if selected_option === "my_events"}-->
+<!--    <EventOrganizer {group} myEvents={true} />-->
 
 {:else if selected_option === "add_event"}
     <EventForm {group}/>
