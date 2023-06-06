@@ -26,7 +26,7 @@
 
     function handleButtonClick(value) {
         selected_option = value;
-        // console.log(value)
+        console.log(value)
     }
 
     function handleChatButtonClick() {
@@ -125,6 +125,7 @@
     //
     //     event.preventDefault();
     // }
+    let myEvents;
 
 
 </script>
@@ -181,17 +182,25 @@
 <input type="radio" class="btn-check" name="chat_or_group_options" id="event_option" value="{false}" autocomplete="off" bind:group={chat_selected}>
 <label class="btn btn-secondary" for="event_option">Wydarzenia</label> -->
 
-<input type="button" class="btn-check" name="chat_option" id="chat_option" on:click={() => handleChatButtonClick()}>
+<!--<input type="button" class="btn-check" name="chat_option" id="chat_option"-->
+<!--       on:click={() => handleButtonClick("chat")}>-->
+<input type="button" class="btn-check" name="chat_option" id="chat_option"
+       on:click={() => handleChatButtonClick("chat")}>
 <label class="btn btn-secondary" for="chat_option">Chat</label>
 <input type="button" class="btn-check" name="events_option" id="events_option"
        on:click={() => handleButtonClick("events")}>
 <label class="btn btn-secondary" for="events_option">Wydarzenia</label>
+<input type="button" class="btn-check" name="my_events_option" id="my_events_option"
+       on:click={() => handleButtonClick("my_events")}>
+<label class="btn btn-secondary" for="my_events_option">Moje wydarzenia</label>
 <input type="button" class="btn-check" name="options_button" id="add_event_option"
        on:click={() => handleButtonClick("add_event")}>
 <label class="btn btn-secondary" for="add_event_option">Dodaj wydarzenie</label>
 
-
+<br/>
+<br/>
 <h1>{group}</h1>
+<br/>
 <!-- {#if chat_selected === true} -->
 {#if selected_option === "chat"}
     <div class="chat m-auto bg-opacity-50 bg-gradient">
@@ -207,7 +216,10 @@
         <input class="w-50 m-auto" on:keydown={handleKeydown}>
     </div>
 {:else if selected_option === "events"}
-    <EventOrganizer {group}/>
+    <EventOrganizer {group} myEvents={false}/>
+
+{:else if selected_option === "my_events"}
+    <EventOrganizer {group} myEvents={true} />
 
 {:else if selected_option === "add_event"}
     <EventForm {group}/>
