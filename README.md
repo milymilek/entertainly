@@ -1,3 +1,3 @@
-# kosciuszkon
+# entertain.ly
 
-test
+Project created during 'Team project' classes on Cracow University of Technology.
