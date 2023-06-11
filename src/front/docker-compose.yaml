@@ -2,11 +2,11 @@ services:
   svelte:
     build: .
     ports:
-      - "1998:5173"
-    networks:
-      network1:
-        ipv4_address: 172.20.10.4
-networks:
-  network1:
-    name: entertainly_net
-    external: true
+      - "1998:3000"
+#    networks:
+#      network1:
+#        ipv4_address: 172.20.10.4
+#networks:
+#  network1:
+#    name: entertainly_net
+#    external: true

@@ -108,29 +108,25 @@
                 {#each column.items as item (item.id)}
                     <div class="btn-light btn col-12 col-md-6 col-lg-3 border-2 rounded-circle my-3 mx-auto px-0 py-5 col-4 bubble_container"
                          class:d-none="{item.visible === undefined || !item.visible}"
-                         on:hold="{timeout_video}"
-                         on:release="{clear_timeout_video}"
-                         on:mousedown="{button_hold}"
-                         on:mousedown="{timeout_video}"
-                         on:mouseup="{clear_timeout_video}"
-                         on:touchstart="{button_hold}"
-                         data-toggle="tooltip" data-placement="top" title="{item.desc}"
-                    >
-                        {item.name}
-                        {#each randomNumbers as n}
-                            <div class="bubble animate" style="animation-duration: {Math.abs(n) + 5}s; left: calc(50% - {(Math.random() * 2 - 1) * 10}%);"></div>
-                        {/each}
-                    </div>
-                {/each}
-            </div>
-        </div>
-    {/each}
-    </div>
+                    on:mousedown="{button_hold}"
+                    on:touchstart="{button_hold}"
+                    data-toggle="tooltip" data-placement="top" title="{item.desc}"
+               >
+                   {item.name}
+                   {#each randomNumbers as n}
+                       <div class="bubble animate" style="animation-duration: {Math.abs(n) + 5}s; left: calc(50% - {(Math.random() * 2 - 1) * 10}%);"></div>
+                   {/each}
+               </div>
+           {/each}
+       </div>
+   </div>
+{/each}
+</div>
 </section>
 {#if columnItems[2].items.length == 0}
-    <button type="button" class="btn btn-primary p-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Done
-    </button>
+<button type="button" class="btn btn-primary p-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+   Done
+</button>
 {/if}
 <Modal bind:show_modal bind:stage bind:max_questions message="Let's get to know you even better!" body="Or get your recommendations right now!"/>
 <VideoModal bind:video_modal></VideoModal>
